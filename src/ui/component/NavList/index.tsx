@@ -178,7 +178,7 @@ export default function NavList() {
         //     </ul>
         // </nav>
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{ backgroundColor: 'black'}}>
+            <AppBar position="static" sx={{ backgroundColor: 'black', marginBottom: '32px'}}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -218,7 +218,7 @@ export default function NavList() {
                             aria-label="show 17 new notifications"
                             color="inherit"
                         >
-                            <Badge badgeContent={1} color="error">
+                            <Badge color="error">
                                 <LogoutIcon />
                             </Badge>
                         </IconButton>

@@ -1,4 +1,4 @@
-import ProductListingPage from "../ui/page";
+import ProductListingPage from "../ui/page/ProductListingPage";
 import {createBrowserRouter} from "react-router-dom";
 
 export const router = createBrowserRouter([

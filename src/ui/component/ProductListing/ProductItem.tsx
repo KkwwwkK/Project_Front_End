@@ -4,31 +4,35 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
+import {ProductListDto} from "../../../data/ProductListDto.tsx";
 
-interface ProductItemProps {
-    img: string;
-    title: string;
-    author: string;
+// interface ProductItemProps {
+//     img: string;
+//     title: string;
+//     author: string;
+// }
+
+type Props = {
+    listData: ProductListDto;
 }
 
-export default function ProductItem({ img, title, author }: ProductItemProps) {
+export default function ProductItem({listData}: Props) {
     return (
-        <Card sx={{ width: 300, height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <CardMedia component="img" height="140" image={img} alt={title} />
-            <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="div">
-                    {title}
+        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardMedia component="img" height="200" image={listData.image_url} alt={listData.name}
+                       sx={{
+                           objectFit: 'scale-down', // Ensure the image covers the entire space
+                       }}/>
+            <CardContent sx={{ flexGrow: 1, paddingBottom: '16px' }}>
+                <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: '20px'}}>
+                    {listData.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    by: {author}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
+                    Price: ${listData.price}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small">Out of Stock / Add to Cart</Button>
             </CardActions>
         </Card>
     );
