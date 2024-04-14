@@ -1,0 +1,72 @@
+[
+  {
+    "pid": 1,
+    "name": "LED Garage Ceiling Light with Camera",
+    "image_url": "https://m.media-amazon.com/images/I/61JJ50MjV8L._AC_SL1500_.jpg",
+    "price": 367.57,
+    "has_stock": true
+  },
+  {
+    "pid": 2,
+    "name": "Scent Air Machine for Home",
+    "image_url": "https://m.media-amazon.com/images/I/51549v56m7L._AC_SL1500_.jpg",
+    "price": 1329.73,
+    "has_stock": false
+  },
+  {
+    "pid": 3,
+    "name": "ASAKUKI Smart Wi-Fi Essential Oil Diffuser",
+    "image_url": "https://m.media-amazon.com/images/I/61kLXiKal3L._AC_SL1500_.jpg",
+    "price": 289.35,
+    "has_stock": true
+  },
+  {
+    "pid": 4,
+    "name": "2-in-1 Dish Soap Dispenser with Sponge Holder",
+    "image_url": "https://m.media-amazon.com/images/I/8131tWdYFfL._AC_SL1500_.jpg",
+    "price": 78.29,
+    "has_stock": true
+  },
+  {
+    "pid": 5,
+    "name": "GHome Smart Mini Smart Plug",
+    "image_url": "https://m.media-amazon.com/images/I/51LMG3goG3L.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+    "price": 166.69,
+    "has_stock": true
+  },
+  {
+    "pid": 6,
+    "name": "YIQIAOHUI Electric Spin Scrubber",
+    "image_url": "https://m.media-amazon.com/images/I/71AW3joBegL._AC_SL1500_.jpg",
+    "price": 430.98,
+    "has_stock": true
+  },
+  {
+    "pid": 7,
+    "name": "Google Nest Thermostat",
+    "image_url": "https://m.media-amazon.com/images/I/51JSqlt6xLL._AC_SL1500_.jpg",
+    "price": 822.84,
+    "has_stock": true
+  },
+  {
+    "pid": 8,
+    "name": "WALI Outlet Shelf Wall Holder",
+    "image_url": "https://m.media-amazon.com/images/I/61hZMlAcbuL._AC_SL1500_.jpg",
+    "price": 109.64,
+    "has_stock": true
+  },
+  {
+    "pid": 9,
+    "name": "H1 Smart Door Handle Lock",
+    "image_url": "https://m.media-amazon.com/images/I/71L2GGH85WL._AC_SL1500_.jpg",
+    "price": 548.52,
+    "has_stock": true
+  },
+  {
+    "pid": 10,
+    "name": "Smart WiFi Wireless Ultrasonic Diffuser",
+    "image_url": "https://m.media-amazon.com/images/I/713+ykRgTIL._AC_SL1500_.jpg",
+    "price": 313.09,
+    "has_stock": true
+  }
+]
