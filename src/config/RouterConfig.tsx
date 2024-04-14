@@ -1,15 +1,16 @@
 import ProductListingPage from "../ui/page/ProductListingPage";
 import {createBrowserRouter} from "react-router-dom";
+import ProductDetail from "../ui/page/ProductDetail/index..tsx";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <ProductListingPage/>
     },
-    // {
-    //     path: "/product/:productId/:userId",
-    //     element: <ProductDetail/>
-    // },
+    {
+        path: "/product/:productId/:userId",
+        element: <ProductDetail/>
+    },
     // {
     //     path: "/shoppingcart",
     //     element: <ShoppingCart/>

@@ -1,36 +1,37 @@
 import NavList from "../../component/NavList";
 import ProductItemList from "../../component/ProductListing/ProductItemList.tsx";
 import {useLocation} from "react-router-dom";
-// import mockData from "./response.json";
+import mockData from "./response.json";
 import * as ProductListApi from "../../../api/ProductListApi.tsx"
 import {ProductListDto} from "../../../data/ProductListDto.tsx";
 import {useEffect, useState} from "react";
+import QuantityInput from "../../component/ProductDetailInfo/QuantityInput.tsx";
 
 export default function ProductListingPage(){
     const location = useLocation();
     const [productListDto, setProductListDto]
         = useState<ProductListDto[] | undefined>(undefined);
+    //
+    // const fetchProductListDto = async () => {
+    //     try {
+    //         setProductListDto(undefined);
+    //         const responseProductListDto: ProductListDto[] = await ProductListApi.getProductListDto();
+    //         setProductListDto(responseProductListDto);
+    //     } catch (error) {
+    //         // navigate to error page
+    //         console.log(error);
+    //         throw error;
+    //     }
+    // }
+    //
+    // useEffect(() => {
+    //     fetchProductListDto()
+    // }, []);
 
-    const fetchProductListDto = async () => {
-        try {
-            setProductListDto(undefined);
-            const responseProductListDto: ProductListDto[] = await ProductListApi.getProductListDto();
-            setProductListDto(responseProductListDto);
-        } catch (error) {
-            // navigate to error page
-            console.log(error);
-            throw error;
-        }
-    }
 
     useEffect(() => {
-        fetchProductListDto()
+        setProductListDto(mockData)
     }, []);
-
-
-    // useEffect(() => {
-    //     setProductListDto(mockData)
-    // }, []);
 
     return(
         <>

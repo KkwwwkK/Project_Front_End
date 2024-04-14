@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import {ProductListDto} from "../../../data/ProductListDto.tsx";
+import Box from "@mui/material/Box";
 
 // interface ProductItemProps {
 //     img: string;
@@ -24,15 +25,17 @@ export default function ProductItem({listData}: Props) {
                            objectFit: 'scale-down', // Ensure the image covers the entire space
                        }}/>
             <CardContent sx={{ flexGrow: 1, paddingBottom: '16px' }}>
-                <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: '20px'}}>
-                    {listData.name}
-                </Typography>
+                <Box sx={{ width: '200px', height: '50px'}}>
+                    <Typography gutterBottom component="div" sx={{ fontSize: '16px'}}>
+                        {listData.name}
+                    </Typography>
+                </Box>
                 <Typography variant="body2" color="text.secondary">
                     Price: ${listData.price}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Out of Stock / Add to Cart</Button>
+                <Button size="small" variant="contained">Add to Cart</Button>
             </CardActions>
         </Card>
     );

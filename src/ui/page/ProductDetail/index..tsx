@@ -1,5 +1,7 @@
 import NavList from "../../component/NavList";
 import {useLocation, useParams} from "react-router-dom";
+import ProductDetailInfo from "../../component/ProductDetailInfo/ProductDetailInfo.tsx";
+import QuantityInput from "../../component/ProductDetailInfo/QuantityInput.tsx";
 
 type params = {
     productId: string,
@@ -13,10 +15,11 @@ export default function ProductDetail() {
     return(
         <div className="product-listing-container">
             <NavList/>
-            <h1>Product Listing Page!</h1>
-            <h2>The pid is {params.productId}</h2>
-            <h2>The userId is {params.userId}</h2>
-            <h3>Pathname: {location.pathname} </h3>
+            <ProductDetailInfo/>
+            {/*<h1>Product Listing Page!</h1>*/}
+            {/*<h2>The pid is {params.productId}</h2>*/}
+            {/*<h2>The userId is {params.userId}</h2>*/}
+            {/*<h3>Pathname: {location.pathname} </h3>*/}
         </div>
     )
 }
