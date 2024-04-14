@@ -3,6 +3,7 @@ import {createBrowserRouter} from "react-router-dom";
 import ProductDetail from "../ui/page/ProductDetail/index..tsx";
 import LoginPage from "../ui/page/LoginPage";
 import ShoppingCart from "../ui/page/ShoppingCart";
+import Checkout from "../ui/page/Checkout";
 
 export const router = createBrowserRouter([
     {
@@ -21,10 +22,10 @@ export const router = createBrowserRouter([
         path: "/login",
         element: <LoginPage/>
     },
-    // {
-    //     path: "/checkout/:transactionId",
-    //     element: <Checkout/>
-    // },
+    {
+        path: "/checkout/:transactionId",
+        element: <Checkout/>
+    },
     // {
     //     path: "/thankyou",
     //     element: <ThankYou/>

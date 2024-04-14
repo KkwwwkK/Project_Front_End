@@ -9,8 +9,8 @@ export default function ShoppingCart() {
     return(
         <div className="shopping-cart-container">
             <NavList/>
-            <ShoppingCartTable/>
             {/*<h1>Shopping Cart Page!</h1>*/}
+            <ShoppingCartTable/>
             {/*<h3>Pathname: {location.pathname} </h3>*/}
         </div>
     )

@@ -5,7 +5,7 @@ import {Container} from "@mui/material";
 
 export default function OrderSummary() {
     return (
-        <Container sx={{display: 'flex', width: '20vw'}}>
+        <Container sx={{display: 'flex', width: '30vw'}}>
             <Box sx={{p: 2, border: '1px solid #ccc', borderRadius: '4px'}}>
                 <Typography variant="h5" sx={{marginBottom: 2}}>Order Summary</Typography>
 
