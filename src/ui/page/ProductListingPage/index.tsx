@@ -5,7 +5,7 @@ import mockData from "./response.json";
 import * as ProductListApi from "../../../api/ProductListApi.tsx"
 import {ProductListDto} from "../../../data/ProductListDto.tsx";
 import {useEffect, useState} from "react";
-import QuantityInput from "../../component/ProductDetailInfo/QuantityInput.tsx";
+import QuantityInput from "../../../util/QuantityInput.tsx";
 
 export default function ProductListingPage(){
     const location = useLocation();
