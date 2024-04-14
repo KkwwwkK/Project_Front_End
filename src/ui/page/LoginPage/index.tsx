@@ -1,10 +1,12 @@
-import NavList from "../../component/NavList";
+import NavList from "../../component/NavList/NavList.tsx";
+import LoginForm from "../../component/Login/LoginForm.tsx";
 
 export default function LoginPage() {
     return(
         <div className="shopping-cart-container">
             <NavList/>
-            <h1>Login Page!</h1>
+            <LoginForm/>
         </div>
+
     )
 }

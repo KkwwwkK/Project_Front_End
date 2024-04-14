@@ -38,14 +38,16 @@ export default function ProductDetailInfo(){
                 }}
                 >
                 <CardContent>
-                    <Typography  component="div">
+                    <Typography  component="div" sx={{fontSize: '18px'}}>
                         Smart WiFi Wireless Ultrasonic Diffuser
                     </Typography>
                     <Typography sx={{ mb: 1.5,
                     margin: "24px 0 0 0"}} color="text.secondary">
                         Description:
                     </Typography>
-                    <Typography>
+                    <Typography sx={{ mb: 1.5,
+                        fontSize: '14px',
+                        margin: "0 0 0 0"}} color="text.secondary">
                         Aromatherapy 400ml Ultrasonic Diffuser & Humidifier with Alexa & Google Home Phone App & Voice Control - Create Schedules - LED & Timer Settings Dark
                         Brand	Sierra Modern Home
                         Color	Dark Brown
@@ -54,7 +56,8 @@ export default function ProductDetailInfo(){
                         Special Feature	Timer
                     </Typography>
                     <Typography variant="body2" sx={{
-                        margin: '16px 0'
+                        margin: '16px 0',
+                        fontSize: '16px'
                     }}>
                         Price: $313.09
                         <br />

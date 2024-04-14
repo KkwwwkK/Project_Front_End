@@ -1,4 +1,4 @@
-import NavList from "../../component/NavList";
+import NavList from "../../component/NavList/NavList.tsx";
 import {useLocation} from "react-router-dom";
 
 export default function ThankYou() {

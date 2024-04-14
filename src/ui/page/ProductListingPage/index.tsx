@@ -1,4 +1,4 @@
-import NavList from "../../component/NavList";
+import NavList from "../../component/NavList/NavList.tsx";
 import ProductItemList from "../../component/ProductListing/ProductItemList.tsx";
 import {useLocation} from "react-router-dom";
 import mockData from "./response.json";

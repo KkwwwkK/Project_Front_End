@@ -1,7 +1,6 @@
-import NavList from "../../component/NavList";
+import NavList from "../../component/NavList/NavList.tsx";
 import {useLocation, useParams} from "react-router-dom";
 import ProductDetailInfo from "../../component/ProductDetailInfo/ProductDetailInfo.tsx";
-import QuantityInput from "../../component/ProductDetailInfo/QuantityInput.tsx";
 
 type params = {
     productId: string,

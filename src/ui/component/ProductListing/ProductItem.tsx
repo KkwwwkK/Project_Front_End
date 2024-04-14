@@ -34,7 +34,7 @@ export default function ProductItem({listData}: Props) {
                     Price: ${listData.price}
                 </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions sx={{ display: 'flex', justifyContent: 'center'}}>
                 <Button size="small" variant="contained">Add to Cart</Button>
             </CardActions>
         </Card>

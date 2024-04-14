@@ -74,11 +74,11 @@ type Props = {
 export default function ProductItemList({productListDto}:Props) {
     return (
         <Container>
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
                 {
                     productListDto.map((value) => (
-                        <Grid value xs={12} sm={6} md={3} key={value.pid}>
-                            <Box sx={{ margin: '8px 8px' }}>
+                        <Grid item xs={12} sm={6} md={3} key={value.pid}>
+                            <Box sx={{ margin: '12px 12px' }}>
                                 <ProductItem listData={value} />
                             </Box>
                         </Grid>
