@@ -76,7 +76,7 @@ export default function NavList() {
         //     </ul>
         // </nav>
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{ backgroundColor: 'black', marginBottom: '32px'}}>
+            <AppBar position="static" sx={{ backgroundColor: 'black', marginBottom: '0'}}>
                 <Toolbar>
                     <IconButton
                         size="large"

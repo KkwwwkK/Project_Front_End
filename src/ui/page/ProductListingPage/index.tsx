@@ -7,6 +7,7 @@ import {ProductListDto} from "../../../data/ProductList/ProductListDto.tsx";
 import {useEffect, useState} from "react";
 import QuantityInput from "../../../util/QuantityInput.tsx";
 import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
+import SlideShow from "../../../util/SlideShow.tsx";
 
 export default function ProductListingPage(){
     const location = useLocation();
@@ -38,6 +39,7 @@ export default function ProductListingPage(){
     return(
         <>
             <NavList/>
+            <SlideShow/>
             {
                 productListDto
                 ? <ProductItemList productListDto={productListDto}/>
