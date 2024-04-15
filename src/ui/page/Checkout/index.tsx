@@ -1,5 +1,5 @@
 import {useLocation, useParams} from "react-router-dom";
-import TransactionRecord from "../../component/CheckOut/TransactionRecord.tsx";
+import Transaction from "../../component/CheckOut/Transaction.tsx";
 import PaymentForm from "../../component/CheckOut/PaymentForm.tsx";
 import {Container} from "@mui/material";
 
@@ -10,10 +10,9 @@ export default function Checkout() {
     return(
         <Container sx={{display: 'flex', width: '100vw', flexDirection: 'row', padding: '0 0', margin: '36px'}}>
             {/*<h1>Checkout Page!</h1>*/}
-            <TransactionRecord/>
+            <Transaction/>
             {/*<h2>TransactionID is {params.transactionId}</h2>*/}
             {/*<h3>Pathname: {location.pathname} </h3>*/}
-            <PaymentForm/>
         </Container>
 
     )

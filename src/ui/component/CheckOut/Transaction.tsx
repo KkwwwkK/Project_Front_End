@@ -6,7 +6,12 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Container } from "@mui/material";
+import {Container, Divider} from "@mui/material";
+import Typography from "@mui/material/Typography";
+import PaymentForm from "./PaymentForm.tsx";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import TransactionRow from "./TransactionRow.tsx";
 
 
 
@@ -20,37 +25,46 @@ function createData(name: string): Data {
 
 const rows = [
     createData('India'),
-    createData('China'),
-    createData('Italy'),
-    createData('United States'),
-    createData('Canada'),
-    createData('Australia'),
-    createData('Germany'),
-    createData('Ireland'),
-    createData('Mexico'),
-    createData('Japan'),
-    createData('France'),
-    createData('United Kingdom'),
-    createData('Russia'),
-    createData('Nigeria'),
-    createData('Brazil'),
+    // createData('China'),
+    // createData('Italy'),
+    // createData('United States'),
+    // createData('Canada'),
+    // createData('Australia'),
+    // createData('Germany'),
+    // createData('Ireland'),
+    // createData('Mexico'),
+    // createData('Japan'),
+    // createData('France'),
+    // createData('United Kingdom'),
+    // createData('Russia'),
+    // createData('Nigeria'),
+    // createData('Brazil'),
 ];
 
-export default function TransactionRecord() {
+export default function Transaction() {
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
 
     return (
-        <Container sx={{ width: '50vw' }}>
-            <Paper sx={{}}>
-                <TableContainer sx={{ maxHeight: 428 }}>
+        <Container sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center'
+        }}>
+            <Paper sx={{
+                display: 'flex',
+                width: '80vw',
+                }}>
+                <TableContainer sx={{ maxHeight: 585 }}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
                                 <TableCell align="center" colSpan={1}>
-                                    Order Summary
+                                    <Typography>
+                                        Order Summary
+                                    </Typography>
                                 </TableCell>
                             </TableRow>
                         </TableHead>
@@ -60,7 +74,9 @@ export default function TransactionRecord() {
                                 .map((row, index) => {
                                     return (
                                         <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                                            <TableCell align="left">{row.name}</TableCell>
+                                            <TableCell align="left">
+                                                <TransactionRow/>
+                                            </TableCell>
                                         </TableRow>
                                     );
                                 })}
@@ -68,6 +84,7 @@ export default function TransactionRecord() {
                     </Table>
                 </TableContainer>
             </Paper>
+            <PaymentForm/>
         </Container>
     );
 }

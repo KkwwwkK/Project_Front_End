@@ -47,13 +47,14 @@ export default function PaymentForm() {
     };
 
     return (
-        <Container sx={{display:'flex', width: '50vw'}}>
+        <Container sx={{display:'flex', width: '43vw'}}>
             <Stack spacing={{ xs: 3, sm: 6 }} useFlexGap>
                 <Box
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
                         gap: 2,
+                        objectFit: 'contain'
                     }}
                 >
                     <Box
