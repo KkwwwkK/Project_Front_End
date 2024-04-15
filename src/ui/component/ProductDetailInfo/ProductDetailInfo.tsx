@@ -6,10 +6,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import QuantityInput from "../../../util/QuantityInput.tsx";
+import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
 
+type Props = {
+    productDetailDto: ProductDetailDto;
+}
 
-
-export default function ProductDetailInfo(){
+export default function ProductDetailInfo({productDetailDto}: Props){
     return(
         <Container sx={{display: "flex",
                         flexDirection: "row",
@@ -26,7 +29,7 @@ export default function ProductDetailInfo(){
                 p={2}
                 sx={{}}
             >
-                <img src="https://m.media-amazon.com/images/I/713+ykRgTIL._AC_SL1500_.jpg"
+                <img src={productDetailDto.image_url}
                      alt="Product Image"
                      style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                 />
@@ -39,7 +42,7 @@ export default function ProductDetailInfo(){
                 >
                 <CardContent>
                     <Typography  component="div" sx={{fontSize: '18px'}}>
-                        Smart WiFi Wireless Ultrasonic Diffuser
+                        {productDetailDto.name}
                     </Typography>
                     <Typography sx={{ mb: 1.5,
                     margin: "24px 0 0 0"}} color="text.secondary">
@@ -48,18 +51,13 @@ export default function ProductDetailInfo(){
                     <Typography sx={{ mb: 1.5,
                         fontSize: '14px',
                         margin: "0 0 0 0"}} color="text.secondary">
-                        Aromatherapy 400ml Ultrasonic Diffuser & Humidifier with Alexa & Google Home Phone App & Voice Control - Create Schedules - LED & Timer Settings Dark
-                        Brand	Sierra Modern Home
-                        Color	Dark Brown
-                        Scent	Aromatherapy
-                        Recommended Uses For Product	Home
-                        Special Feature	Timer
+                        {productDetailDto.description}
                     </Typography>
                     <Typography variant="body2" sx={{
                         margin: '16px 0',
                         fontSize: '16px'
                     }}>
-                        Price: $313.09
+                        Price: ${productDetailDto.price}
                         <br />
                     </Typography>
                     Quantity:

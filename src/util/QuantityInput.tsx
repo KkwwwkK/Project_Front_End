@@ -27,10 +27,10 @@ export default function QuantityInput() {
             {/* Decrease Button */}
             <Button variant="contained" onClick={handleDecrease}
                     sx={{
-                        backgroundColor: 'black',
-                        color: 'white', // Text color (white) for contrast
+                        backgroundColor: 'white',
+                        color: 'black', // Text color (white) for contrast
                         minWidth: '40px', // Adjust width as needed
-                        padding: '8px', // Adjust padding for button size
+                        padding: '8px 0', // Adjust padding for button size
                         borderRadius: '4px', // Rounded corners
                     }}>
                 -
@@ -48,7 +48,7 @@ export default function QuantityInput() {
                     height:'24px',
                     textAlign: 'center',
                     margin: '0 1px',
-                    border: '1px solid #ccc',
+                    border: '2px solid #ccc',
                     borderRadius: '4px',
                     padding: '8px',
                     outline: 'none',
@@ -58,8 +58,8 @@ export default function QuantityInput() {
             {/* Increase Button */}
             <Button variant="contained" onClick={handleIncrease}
                     sx={{
-                        backgroundColor: 'black',
-                        color: 'white', // Text color (white) for contrast
+                        backgroundColor: 'white',
+                        color: 'black', // Text color (white) for contrast
                         minWidth: '40px', // Adjust width as needed
                         padding: '8px', // Adjust padding for button size
                         borderRadius: '4px', // Rounded corners

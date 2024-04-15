@@ -8,7 +8,7 @@ export default function Checkout() {
     const location = useLocation();
 
     return(
-        <Container sx={{display: 'flex', width: '100vw', flexDirection: 'row', padding: '0 0'}}>
+        <Container sx={{display: 'flex', width: '100vw', flexDirection: 'row', padding: '0 0', margin: '36px'}}>
             {/*<h1>Checkout Page!</h1>*/}
             <TransactionRecord/>
             {/*<h2>TransactionID is {params.transactionId}</h2>*/}

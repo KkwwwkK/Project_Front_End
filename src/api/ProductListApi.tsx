@@ -1,10 +1,10 @@
 import axios from "axios";
-import {ProductListDto} from "../data/ProductListDto.tsx";
+import {ProductListDto} from "../data/ProductList/ProductListDto.tsx";
 
+const baseUrl = "http://localhost:8080";
 export const getProductListDto = async (): Promise<ProductListDto[]> => {
     try {
-        const apiUrl = "http://localhost:8080/public/product";
-        const response = await axios.get<ProductListDto[]>(apiUrl);
+        const response = await axios.get<ProductListDto[]>(`${baseUrl}/public/product`);
         return response.data;
     } catch (error) {
         console.log(error);
