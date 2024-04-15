@@ -20,14 +20,15 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                         alignItems: "center",
                         height: "80vh"}}>
             <Box
-                height={400}
-                width={300}
+                height={550}
+                width={400}
                 my={4}
                 display="flex"
                 alignItems="center"
                 gap={4}
                 p={2}
                 sx={{}}
+
             >
                 <img src={productDetailDto.image_url}
                      alt="Product Image"

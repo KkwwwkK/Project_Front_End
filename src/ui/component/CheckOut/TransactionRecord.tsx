@@ -45,12 +45,12 @@ export default function TransactionRecord() {
     return (
         <Container sx={{ width: '50vw' }}>
             <Paper sx={{}}>
-                <TableContainer sx={{ maxHeight: 440 }}>
+                <TableContainer sx={{ maxHeight: 428 }}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
                                 <TableCell align="center" colSpan={1}>
-                                    Country
+                                    Order Summary
                                 </TableCell>
                             </TableRow>
                         </TableHead>
