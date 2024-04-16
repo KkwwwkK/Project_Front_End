@@ -62,6 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function NavList() {
     const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
+    const navigate = useNavigate();
 
     const renderLoginUser = ()=>{
         if (loginUser){
@@ -80,7 +81,9 @@ export default function NavList() {
         } else if (loginUser === null){
             return(
                 <Stack direction='row'>
-                    <Button>
+                    <Button onClick={()=>{
+                        navigate("/login")
+                    }}>
                         Login
                     </Button>
                 </Stack>)
@@ -88,6 +91,7 @@ export default function NavList() {
             <Spinner/>
         }
     }
+
 
 
 
@@ -147,6 +151,9 @@ export default function NavList() {
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton
+                            onClick={()=>{
+                                navigate("/shoppingcart")
+                            }}
                             size="large" aria-label="show 4 new mails" color="inherit"
                             >
                             <Badge badgeContent={1} color="error">
