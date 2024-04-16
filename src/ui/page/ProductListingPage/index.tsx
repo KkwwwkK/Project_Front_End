@@ -2,7 +2,7 @@ import NavList from "../../component/NavList/NavList.tsx";
 import ProductItemList from "../../component/ProductListing/ProductItemList.tsx";
 import {useLocation, useNavigate} from "react-router-dom";
 import mockData from "./response.json";
-import * as ProductListApi from "../../../api/ProductListApi.tsx"
+import * as ProductListApi from "../../../api/GetAllProductApi.tsx"
 import {ProductListDto} from "../../../data/ProductList/ProductListDto.tsx";
 import {useEffect, useState} from "react";
 import QuantityInput from "../../../util/QuantityInput.tsx";

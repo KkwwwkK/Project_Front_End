@@ -31,13 +31,32 @@ export default function ProductDetailInfo({productDetailDto}: Props){
         }
     }
 
-    // const renderStock = ()=> {
-    //     if (productDetailDto.stock >= 0){
-    //         <Button size="small" variant="contained">Add to Cart</Button>
-    //     } else {
-    //         <Typography>Sorry, Out of Stock!</Typography>
-    //     }
-    // }
+    const renderAddToCart =()=> {
+        if (productDetailDto.stock > 0){
+            return(
+                <Box>
+                    <Box sx={{display:"flex", flexDirection: "column", ml: "16px"}}>
+                        <Typography>
+                            Quantity:
+                        </Typography>
+                        <QuantityInput quantity={quantity} handleMinus={handleMinus} handlePlus={handlePlus}/>
+                    </Box>
+                    <CardActions sx={{
+                        paddingLeft: '16px', // Set left padding to 16px
+                        justifyContent: 'flex-start', // Align items to the left
+                    }}>
+                        <Button size="small" variant="contained">Add to Cart</Button>
+                    </CardActions>
+                </Box>
+            )
+        } else {
+            return(
+                <Box>
+                    <Typography sx={{ml: "16px", color: "red"}}>Sorry, Out of Stock!</Typography>
+                </Box>
+            )
+        }
+    }
 
 
 
@@ -91,15 +110,11 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                         Price: ${productDetailDto.price}
                         <br />
                     </Typography>
-                    Quantity:
-                    <QuantityInput quantity={quantity} handleMinus={handleMinus} handlePlus={handlePlus}/>
+
                 </CardContent>
-                <CardActions sx={{
-                    paddingLeft: '16px', // Set left padding to 16px
-                    justifyContent: 'flex-start', // Align items to the left
-                }}>
-                    <Button size="small" variant="contained">Add to Cart</Button>
-                </CardActions>
+                {
+                    renderAddToCart()
+                }
             </Card>
         </Container>
     )

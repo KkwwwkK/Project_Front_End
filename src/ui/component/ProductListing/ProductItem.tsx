@@ -31,7 +31,7 @@ export default function ProductItem({listData}: Props) {
                         </Typography>
                     </Box>
                     <Typography variant="body2" color="text.secondary" sx={{textAlign: 'center', marginTop: '10px'}}>
-                        Price: ${listData.price}
+                        Price: ${listData.price.toLocaleString()}
                     </Typography>
                 </CardContent>
                 </Link>

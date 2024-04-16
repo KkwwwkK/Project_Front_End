@@ -5,7 +5,7 @@ import mockData from "./response.json";
 import {useEffect, useState} from "react";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
 import ErrorPage from "../../component/ErrorPage/ErrorPage.tsx";
-import * as ProductDetailApi from "../../../api/ProductDetailApi.tsx"
+import * as ProductDetailApi from "../../../api/GetProductByIdApi.tsx"
 import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 
 type params = {
@@ -14,26 +14,26 @@ type params = {
 }
 
 export default function ProductDetail() {
-    const params = useParams<params>();
+    const {productId} = useParams<params>();
     const location = useLocation();
     const [productDetailDto, setProductDetailDto]
         = useState<ProductDetailDto | undefined>(undefined);
 
     const navigate = useNavigate();
-    const fetchProduct = async (): Promise<number | void>=>  {
+    const fetchProductDetail = async (productId: string): Promise<void>=>  {
         try {
             setProductDetailDto(undefined);
-            const responseProductDto = await ProductDetailApi.getProductDetailDto(Number(params.productId));
+            const responseProductDto = await ProductDetailApi.getProductById(productId);
             setProductDetailDto(responseProductDto);
-            return responseProductDto.pid;
+            // return responseProductDto.pid;
         } catch (error) {
             navigate("/error")
         }
     }
 
     useEffect(() => {
-        if(fetchProduct){
-            fetchProduct();
+        if(productId){
+            fetchProductDetail(productId);
         } else {
             navigate("/error")
         }
