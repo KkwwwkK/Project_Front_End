@@ -4,16 +4,64 @@ import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import FaceOutlinedIcon from '@mui/icons-material/FaceOutlined';
+import {ChangeEvent, FormEvent, useContext, useEffect, useState} from "react";
 
+import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.tsx";
+import {useNavigate} from "react-router-dom";
+import {UserData} from "../../../data/user/UserData.tsx";
+import {LoginUserContext} from "../../../context/LoginUserContext.ts";
+import {GoogleLoginButton} from "react-social-login-buttons";
+import {Divider} from "@mui/material";
 
 export default function LoginForm() {
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+
+    const navigate = useNavigate();
+
+    const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
+
+    const handleEmailChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>{
+        setEmail(event.target.value)
+    }
+
+    const handlePasswordChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=> {
+        setPassword(event.target.value)
+    }
+
+    // funtion for loginFail
+
+
+    const handleLogin = async (event: FormEvent<HTMLFormElement>)=>{
+        event.preventDefault();
+       const loginResult = await FirebaseAuthService.handleSignInWithEmailAndPassword(email, password);
+       if(loginResult){
+           navigate(-1);
+       } else {
+           // set isLoginFail(true);
+           alert("login failed");
+       }
+    }
+
+    const handleGoogleSignIn = async ()=>{
+        if(await FirebaseAuthService.handleSignInWithGoogle()){
+            navigate(-1);
+        }
+    }
+
+    useEffect(() => {
+        if(loginUser){
+            navigate("/");
+        }
+    }, [loginUser]);
 
     return (
-        <Container component="main" maxWidth="xs" sx={{
+        <Container component="form"
+                   onSubmit = {handleLogin}
+                   maxWidth="xs" sx={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -41,8 +89,9 @@ export default function LoginForm() {
                         id="email"
                         label="Email Address"
                         name="email"
-                        autoComplete="email"
+                        // autoComplete="email"
                         autoFocus
+                        onChange={handleEmailChange}
                     />
                     <TextField
                         margin="normal"
@@ -52,7 +101,8 @@ export default function LoginForm() {
                         label="Password"
                         type="password"
                         id="password"
-                        autoComplete="current-password"
+                        // autoComplete="current-password"
+                        onChange={handlePasswordChange}
                     />
 
                     <Button
@@ -60,9 +110,15 @@ export default function LoginForm() {
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
+                        onClick={handleLogin}
                     >
                         Sign In
                     </Button>
+                    <Divider sx={{my: 1}}/>
+                    <GoogleLoginButton
+                        style={{width: '100%', margin: "0"}}
+                        onClick={handleGoogleSignIn}
+                    />
                     <Grid container>
                         <Grid item>
                             <Link href="#" variant="body2">

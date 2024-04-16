@@ -7,12 +7,40 @@ import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import QuantityInput from "../../../util/QuantityInput.tsx";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
+import {useState} from "react";
 
 type Props = {
     productDetailDto: ProductDetailDto;
 }
 
 export default function ProductDetailInfo({productDetailDto}: Props){
+    const[quantity, setQuantity] = useState<number>(1);
+    const handleMinus = ()=> {
+        if(quantity > 1){
+            setQuantity((prevState:number) => (
+                prevState - 1
+        ))
+        }
+    }
+
+    const handlePlus = ()=> {
+        if(quantity < productDetailDto.stock){
+            setQuantity((prevState:number) => (
+                prevState + 1
+            ))
+        }
+    }
+
+    // const renderStock = ()=> {
+    //     if (productDetailDto.stock >= 0){
+    //         <Button size="small" variant="contained">Add to Cart</Button>
+    //     } else {
+    //         <Typography>Sorry, Out of Stock!</Typography>
+    //     }
+    // }
+
+
+
     return(
         <Container sx={{display: "flex",
                         flexDirection: "row",
@@ -51,7 +79,9 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                     </Typography>
                     <Typography sx={{ mb: 1.5,
                         fontSize: '14px',
-                        margin: "0 0 0 0"}} color="text.secondary">
+                        margin: "0 0 0 0",
+                        whiteSpace: 'pre-line'
+                    }} color="text.secondary">
                         {productDetailDto.description}
                     </Typography>
                     <Typography variant="body2" sx={{
@@ -62,7 +92,7 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                         <br />
                     </Typography>
                     Quantity:
-                    <QuantityInput/>
+                    <QuantityInput quantity={quantity} handleMinus={handleMinus} handlePlus={handlePlus}/>
                 </CardContent>
                 <CardActions sx={{
                     paddingLeft: '16px', // Set left padding to 16px

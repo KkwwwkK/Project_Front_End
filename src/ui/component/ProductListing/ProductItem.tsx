@@ -35,12 +35,12 @@ export default function ProductItem({listData}: Props) {
                     </Typography>
                 </CardContent>
                 </Link>
-                <CardActions sx={{ display: 'flex', justifyContent: 'center'}}>
-                    {
-                        listData.has_stock
-                            ? <Button size="small" variant="contained">Add to Cart</Button>
-                            : <Button size="small" variant="contained">Out of Stock</Button>
-                    }
+                <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+                    {listData.has_stock ? (
+                        <Button size="small" variant="contained">Add to Cart</Button>
+                    ) : (
+                        <Button size="small" variant="contained">Out of Stock</Button>
+                    )}
                 </CardActions>
             </CardActionArea>
         </Card>

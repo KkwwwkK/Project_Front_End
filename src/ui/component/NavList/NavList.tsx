@@ -11,7 +11,14 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMicrochip} from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {useContext} from "react";
+import {UserData} from "../../../data/user/UserData.tsx";
+import {LoginUserContext} from "../../../context/LoginUserContext.ts";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Spinner from "../../../util/Spinner.tsx";
+import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.tsx";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -54,6 +61,35 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavList() {
+    const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
+
+    const renderLoginUser = ()=>{
+        if (loginUser){
+            return(
+                <Stack direction='row'>
+                    <Typography>
+                        {loginUser.email}
+                    </Typography>
+                    <Button onClick={()=>{
+                        FirebaseAuthService.handleSignOut();
+                    }}>
+                        Logout
+                    </Button>
+                </Stack>
+            )
+        } else if (loginUser === null){
+            return(
+                <Stack direction='row'>
+                    <Button>
+                        Login
+                    </Button>
+                </Stack>)
+        } else if (loginUser === undefined){
+            <Spinner/>
+        }
+    }
+
+
 
     return (
         // <nav>
@@ -110,7 +146,9 @@ export default function NavList() {
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                        <IconButton
+                            size="large" aria-label="show 4 new mails" color="inherit"
+                            >
                             <Badge badgeContent={1} color="error">
                                 <ShoppingCartIcon />
                             </Badge>
@@ -121,7 +159,9 @@ export default function NavList() {
                             color="inherit"
                         >
                             <Badge color="error">
-                                <LogoutIcon />
+                                {
+                                    renderLoginUser()
+                                }
                             </Badge>
                         </IconButton>
 

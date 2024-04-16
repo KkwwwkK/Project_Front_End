@@ -5,7 +5,7 @@ import LoginPage from "../ui/page/LoginPage";
 import ShoppingCart from "../ui/page/ShoppingCart";
 import Checkout from "../ui/page/Checkout";
 import {Error} from "@mui/icons-material";
-import ErrorPage from "../ui/component/ErrorPage";
+import ErrorPage from "../ui/component/ErrorPage/ErrorPage.tsx";
 
 export const router = createBrowserRouter([
     {

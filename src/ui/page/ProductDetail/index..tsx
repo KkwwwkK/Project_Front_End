@@ -4,7 +4,7 @@ import ProductDetailInfo from "../../component/ProductDetailInfo/ProductDetailIn
 import mockData from "./response.json";
 import {useEffect, useState} from "react";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
-import ErrorPage from "../../component/ErrorPage";
+import ErrorPage from "../../component/ErrorPage/ErrorPage.tsx";
 import * as ProductDetailApi from "../../../api/ProductDetailApi.tsx"
 import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 
@@ -20,18 +20,23 @@ export default function ProductDetail() {
         = useState<ProductDetailDto | undefined>(undefined);
 
     const navigate = useNavigate();
-    const fetchProduct = async () => {
+    const fetchProduct = async (): Promise<number | void>=>  {
         try {
             setProductDetailDto(undefined);
             const responseProductDto = await ProductDetailApi.getProductDetailDto(Number(params.productId));
             setProductDetailDto(responseProductDto);
+            return responseProductDto.pid;
         } catch (error) {
             navigate("/error")
         }
     }
 
     useEffect(() => {
-        fetchProduct();
+        if(fetchProduct){
+            fetchProduct();
+        } else {
+            navigate("/error")
+        }
     }, []);
 
 
