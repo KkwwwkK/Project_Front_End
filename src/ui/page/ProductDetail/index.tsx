@@ -1,10 +1,10 @@
 import NavList from "../../component/NavList/NavList.tsx";
-import {Params, useLocation, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import ProductDetailInfo from "../../component/ProductDetailInfo/ProductDetailInfo.tsx";
-import mockData from "./response.json";
+// import mockData from "./response.json";
 import {useEffect, useState} from "react";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
-import ErrorPage from "../../component/ErrorPage/ErrorPage.tsx";
+// import ErrorPage from "../../component/ErrorPage/ErrorPage.tsx";
 import * as ProductDetailApi from "../../../api/GetProductByIdApi.tsx"
 import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 
@@ -15,7 +15,7 @@ type params = {
 
 export default function ProductDetail() {
     const {productId} = useParams<params>();
-    const location = useLocation();
+    // const location = useLocation();
     const [productDetailDto, setProductDetailDto]
         = useState<ProductDetailDto | undefined>(undefined);
 

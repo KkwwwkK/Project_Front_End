@@ -1,4 +1,3 @@
-import {ChangeEvent, useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -13,17 +12,6 @@ type Props = {
 
 
 export default function QuantityInput({quantity, handleMinus, handlePlus}: Props) {
-    // const [quantity, setQuantity] = useState(1);
-
-    // const handleDecrease = () => {
-    //     if (quantity > 1) {
-    //         setQuantity(quantity - 1);
-    //     }
-    // };
-    //
-    // const handleIncrease = () => {
-    //     setQuantity(quantity + 1);
-    // };
 
     // const handleInputChange = (event:ChangeEvent<HTMLInputElement>) => {
     //     const value = event.target.value;
@@ -49,21 +37,17 @@ export default function QuantityInput({quantity, handleMinus, handlePlus}: Props
 
             {/* Quantity Input Box */}
             <Box sx={{display: 'flex'}}>
-                <Typography component="input"
-                            // type="number"
-                            value={quantity}
-                            // onChange={handleInputChange}
-                            min={0}
+                <Typography
                             sx={{
                                 display: 'flex',
-                                width: '50px',
+                                width: '32px',
                                 height:'24px',
-                                textAlign: 'center',
-                                margin: '0 1px',
+                                justifyContent: 'center',
                                 border: 'none',
                                 borderRadius: '4px',
                                 outline: 'none',
                             }}>
+                    {quantity}
                 </Typography>
             </Box>
 

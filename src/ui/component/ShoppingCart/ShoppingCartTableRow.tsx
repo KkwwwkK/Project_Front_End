@@ -1,13 +1,16 @@
 import { TableRow, TableCell } from '@mui/material';
-import QuantityInput from "../../../util/QuantityInput.tsx";
+// import QuantityInput from "../../../util/QuantityInput.tsx";
 import DeleteIcon from '@mui/icons-material/Delete';
+import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
 
-
-export default function ShoppingCartTableRow(){
+type Props = {
+    listData: CartItemDto;
+}
+export default function ShoppingCartTableRow({listData}: Props){
     return (
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell component="th" scope="row">
-                <img src="https://m.media-amazon.com/images/I/713+ykRgTIL._AC_SL1500_.jpg"
+                <img src={listData.image_url}
                      alt="Product Image"
                     style={{
                     maxWidth: '100px', // Set the maximum width of the image
@@ -16,10 +19,10 @@ export default function ShoppingCartTableRow(){
                 }}
                 />
             </TableCell>
-            <TableCell align="center">2-in-1 Dish Soap Dispenser with Sponge Holder</TableCell>
-            <TableCell align="center">$78.29</TableCell>
-            <TableCell align="center"><QuantityInput /></TableCell>
-            <TableCell align="center">Subtotal</TableCell>
+            <TableCell align="center">{listData.name}</TableCell>
+            <TableCell align="center">${listData.price.toLocaleString()}</TableCell>
+            <TableCell align="center">{listData.cart_quantity}</TableCell>
+            <TableCell align="center">$ {(listData.price * listData.cart_quantity).toLocaleString()}</TableCell>
             <TableCell align="center"><DeleteIcon/></TableCell>
         </TableRow>
     );

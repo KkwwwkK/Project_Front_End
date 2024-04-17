@@ -1,6 +1,6 @@
 import ProductListingPage from "../ui/page/ProductListingPage";
 import {createBrowserRouter} from "react-router-dom";
-import ProductDetail from "../ui/page/ProductDetail/index..tsx";
+import ProductDetail from "../ui/page/ProductDetail";
 import LoginPage from "../ui/page/LoginPage";
 import ShoppingCart from "../ui/page/ShoppingCart";
 import Checkout from "../ui/page/Checkout";

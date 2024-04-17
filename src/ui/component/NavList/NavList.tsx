@@ -8,7 +8,6 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import LogoutIcon from '@mui/icons-material/Logout';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMicrochip} from "@fortawesome/free-solid-svg-icons";
 import {Link, useNavigate} from 'react-router-dom';
@@ -96,25 +95,6 @@ export default function NavList() {
 
 
     return (
-        // <nav>
-        //     <ul>
-        //         <li>
-        //             <Link to="/">Product Listing Page</Link>
-        //         </li>
-        //         <li>
-        //             <Link to="/product/1/99">Product Detail Page</Link>
-        //         </li>
-        //         <li>
-        //             <Link to="/shoppingcart">Shopping Cart Page</Link>
-        //         </li>
-        //         <li>
-        //             <Link to="/checkout/1">Checkout Page</Link>
-        //         </li>
-        //         <li>
-        //             <Link to="/thankyou">Thank You Page</Link>
-        //         </li>
-        //     </ul>
-        // </nav>
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: 'black', marginBottom: '0'}}>
                 <Toolbar>
@@ -160,8 +140,8 @@ export default function NavList() {
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
-                        <IconButton
-                            size="large"
+                        <Box
+                            component="div"
                             aria-label="show 17 new notifications"
                             color="inherit"
                         >
@@ -170,7 +150,7 @@ export default function NavList() {
                                     renderLoginUser()
                                 }
                             </Badge>
-                        </IconButton>
+                        </Box>
 
                     </Box>
                 </Toolbar>

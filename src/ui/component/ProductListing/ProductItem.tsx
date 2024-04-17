@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import {ProductListDto} from "../../../data/ProductList/ProductListDto.tsx";
 import Box from "@mui/material/Box";
 import {CardActionArea} from "@mui/material";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 type Props = {
@@ -15,10 +15,13 @@ type Props = {
 }
 
 export default function ProductItem({listData}: Props) {
+    const navigate = useNavigate();
+
     return (
         <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column'}}>
-            <CardActionArea>
-            <Link to={`/product/${listData.pid}/:userId`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <CardActionArea component="div" onClick={()=>{
+                navigate(`/product/${listData.pid}/:userId`)
+            }} sx={{ textDecoration: 'none', color: 'inherit' }}>
                 <CardMedia component="img" height="200" image={listData.image_url} alt={listData.name}
                            sx={{
                                marginTop: '12px',
@@ -34,7 +37,6 @@ export default function ProductItem({listData}: Props) {
                         Price: ${listData.price.toLocaleString()}
                     </Typography>
                 </CardContent>
-                </Link>
                 <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
                     {listData.has_stock ? (
                         <Button size="small" variant="contained">Add to Cart</Button>

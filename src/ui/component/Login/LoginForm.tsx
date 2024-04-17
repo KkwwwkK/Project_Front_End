@@ -81,7 +81,7 @@ export default function LoginForm() {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <Box component="form" sx={{ mt: 1 }}>
+                <Box component="div" sx={{ mt: 1 }}>
                     <TextField
                         margin="normal"
                         required
@@ -110,7 +110,6 @@ export default function LoginForm() {
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
-                        onClick={handleLogin}
                     >
                         Sign In
                     </Button>

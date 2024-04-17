@@ -1,11 +1,11 @@
-import {useLocation, useParams} from "react-router-dom";
+// import {useLocation, useParams} from "react-router-dom";
 import Transaction from "../../component/CheckOut/Transaction.tsx";
-import PaymentForm from "../../component/CheckOut/PaymentForm.tsx";
+// import PaymentForm from "../../component/CheckOut/PaymentForm.tsx";
 import {Container} from "@mui/material";
 
 export default function Checkout() {
-    const params = useParams();
-    const location = useLocation();
+    // const params = useParams();
+    // const location = useLocation();
 
     return(
         <Container sx={{display: 'flex', width: '100vw', flexDirection: 'row', padding: '0 0', margin: '36px'}}>

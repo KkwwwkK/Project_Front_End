@@ -3,9 +3,13 @@ import NavList from "../../component/NavList/NavList.tsx";
 import ShoppingCartTable from "../../component/ShoppingCart/ShoppingCartTable.tsx";
 // import OrderSummary from "../../component/ShoppingCart/OrderSummary.tsx";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import mockData from "./response.json";
+import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
 
 export default function ShoppingCart() {
+    const[cartItemDto, setCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
+
     const putCartItem = async ()=>{
         CartItemApi.putCartItem("1", "1");
     }
@@ -13,15 +17,17 @@ export default function ShoppingCart() {
     // const location = useLocation();
 
     useEffect(() => {
+        setCartItemDto(mockData)
         putCartItem();
     }, []);
 
     return(
         <div className="shopping-cart-container">
             <NavList/>
-            {/*<h1>Shopping Cart Page!</h1>*/}
-            <ShoppingCartTable/>
-            {/*<h3>Pathname: {location.pathname} </h3>*/}
+            {
+                cartItemDto &&
+                <ShoppingCartTable cartItemDto={cartItemDto}/>
+            }
         </div>
     )
 }

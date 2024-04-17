@@ -31,6 +31,7 @@ export default function ProductDetailInfo({productDetailDto}: Props){
         }
     }
 
+
     const renderAddToCart =()=> {
         if (productDetailDto.stock > 0){
             return(

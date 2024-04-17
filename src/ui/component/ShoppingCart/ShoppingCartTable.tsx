@@ -2,9 +2,19 @@
 import {TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Container} from '@mui/material';
 import ShoppingCartTableRow from "./ShoppingCartTableRow.tsx";
 import OrderSummary from "./OrderSummary.tsx";
+import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
+
+type Props={
+    cartItemDto: CartItemDto[];
+}
+
+export default function ShoppingCartTable({cartItemDto}: Props){
+    let totalPrice:number = 0;
+    cartItemDto.forEach((value)=>{
+        totalPrice += value.price * value.cart_quantity;
+    })
 
 
-export default function ShoppingCartTable(){
     return (
         <Container sx={{display: 'flex', flexDirection: 'row'}}>
             <TableContainer component={Paper}>
@@ -20,11 +30,15 @@ export default function ShoppingCartTable(){
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        <ShoppingCartTableRow/>
+                        {
+                            cartItemDto.map((data)=>(
+                                <ShoppingCartTableRow key={data.pid} listData={data}/>
+                            ))
+                        }
                     </TableBody>
                 </Table>
             </TableContainer>
-            <OrderSummary/>
+            <OrderSummary totalPrice={totalPrice}/>
         </Container>
     );
 }
