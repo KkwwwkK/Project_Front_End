@@ -33,9 +33,10 @@ export default function OrderSummary({totalPrice}: Props) {
             // zIndex: 1000
         }}>
             <Box sx={{p: 2, border: '1px solid #ccc', borderRadius: '4px'}}>
-                <Typography variant="h5" sx={{ marginBottom: 2, fontSize: '1.5rem' }}>Order Summary</Typography>
-
-                <Typography  sx={{margin: "24px 0"}}>
+                <Typography variant="h5" sx={{ marginBottom: 2, fontSize: '1.5rem' }}>
+                    Order Summary
+                </Typography>
+                <Typography  sx={{margin: "24px 0", whiteSpace: 'pre-line'}}>
                     Total Price:
                     $ {totalPrice.toLocaleString()}
                 </Typography>
