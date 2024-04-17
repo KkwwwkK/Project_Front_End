@@ -6,9 +6,15 @@ import {useEffect, useState} from "react";
 import {UserData} from "./data/user/UserData.tsx";
 import * as FirebaseAuthService from "./authService/FirebaseAuthService.tsx";
 import {LoginUserContext} from "./context/LoginUserContext.ts";
+import {CartItemDto} from "./data/CartItem/CartItemDto.ts";
 
 function App() {
     const[loginUser, setLoginUser] = useState<UserData | null | undefined >(undefined);
+
+
+    // const[cartItemDto, setCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
+    // const[cartItemQuantity, setCartItemQuantity] = useState<number>(0);
+
 
     useEffect(() => {
         FirebaseAuthService.handleOnAuthStateChanged(setLoginUser);

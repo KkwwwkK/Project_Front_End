@@ -18,6 +18,8 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Spinner from "../../../util/Spinner.tsx";
 import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.tsx";
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -59,6 +61,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+// type Props = {
+//     cartItemQuantity: number
+// }
+
 export default function NavList() {
     const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
     const navigate = useNavigate();
@@ -67,31 +73,36 @@ export default function NavList() {
         if (loginUser){
             return(
                 <Stack direction='row'>
-                    <Typography>
-                        {loginUser.email}
-                    </Typography>
-                    <Button onClick={()=>{
-                        FirebaseAuthService.handleSignOut();
-                    }}>
-                        Logout
-                    </Button>
+                    <Box sx={{display: "flex", margin: "12px 4px 0 8px"}}>
+                        <Typography>
+                            {loginUser.email}
+                        </Typography>
+
+                    </Box>
+                    <Box sx={{display: "flex", margin: "6px 0 0 0"}}>
+                        <Button onClick={()=>{
+                            FirebaseAuthService.handleSignOut();
+                        }}>
+                            <LogoutIcon/>
+                        </Button>
+                    </Box>
                 </Stack>
             )
         } else if (loginUser === null){
             return(
                 <Stack direction='row'>
-                    <Button onClick={()=>{
-                        navigate("/login")
-                    }}>
-                        Login
-                    </Button>
+                    <Box sx={{display: "flex", margin: "6px 0 0 0"}}>
+                        <Button onClick={()=>{
+                            navigate("/login")
+                        }}>
+                            <LoginIcon/>
+                        </Button>
+                    </Box>
                 </Stack>)
         } else if (loginUser === undefined){
             <Spinner/>
         }
     }
-
-
 
 
     return (
@@ -117,7 +128,7 @@ export default function NavList() {
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        The Best E-shop
+                        Smart Home
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
@@ -136,7 +147,7 @@ export default function NavList() {
                             }}
                             size="large" aria-label="show 4 new mails" color="inherit"
                             >
-                            <Badge badgeContent={1} color="error">
+                            <Badge badgeContent={3} color="error">
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>

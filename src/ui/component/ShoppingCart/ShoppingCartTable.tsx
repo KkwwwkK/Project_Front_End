@@ -3,6 +3,7 @@ import {TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper,
 import ShoppingCartTableRow from "./ShoppingCartTableRow.tsx";
 import OrderSummary from "./OrderSummary.tsx";
 import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
+import Typography from "@mui/material/Typography";
 
 type Props={
     cartItemDto: CartItemDto[];
@@ -16,16 +17,21 @@ export default function ShoppingCartTable({cartItemDto}: Props){
 
 
     return (
-        <Container sx={{display: 'flex', flexDirection: 'row'}}>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Container sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            marginTop: '40px',
+            justifyContent: 'center'
+        }}>
+            <TableContainer component={Paper} sx={{ width: 'calc(100vw + 400px)' }}> {/* Adjust width here */}
+                <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center">Image</TableCell>
-                            <TableCell align="center">Name</TableCell>
-                            <TableCell align="center">Unit Price(HKD)</TableCell>
-                            <TableCell align="center">Quantity</TableCell>
-                            <TableCell align="center">Subtotal</TableCell>
+                            <TableCell align="center"><Typography>Image</Typography></TableCell>
+                            <TableCell align="center"><Typography>Name</Typography></TableCell>
+                            <TableCell align="center"><Typography>Unit Price(HKD)</Typography></TableCell>
+                            <TableCell align="center"><Typography>Quantity</Typography></TableCell>
+                            <TableCell align="center"><Typography>Subtotal</Typography></TableCell>
                             <TableCell align="center"></TableCell>
                         </TableRow>
                     </TableHead>

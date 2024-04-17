@@ -37,14 +37,12 @@ export default function ProductDetailInfo({productDetailDto}: Props){
             return(
                 <Box>
                     <Box sx={{display:"flex", flexDirection: "column", ml: "16px"}}>
-                        <Typography>
-                            Quantity:
-                        </Typography>
                         <QuantityInput quantity={quantity} handleMinus={handleMinus} handlePlus={handlePlus}/>
                     </Box>
                     <CardActions sx={{
                         paddingLeft: '16px', // Set left padding to 16px
                         justifyContent: 'flex-start', // Align items to the left
+                        marginTop: '12px'
                     }}>
                         <Button size="small" variant="contained">Add to Cart</Button>
                     </CardActions>
@@ -66,16 +64,15 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                         flexDirection: "row",
                         justifyContent: "center",
                         alignItems: "center",
-                        height: "80vh"}}>
+                        height: "90vh"}}>
             <Box
-                height={550}
-                width={400}
+                height={600}
+                width={500}
                 my={4}
                 display="flex"
                 alignItems="center"
                 gap={4}
-                p={2}
-                sx={{}}
+                p={4}
 
             >
                 <img src={productDetailDto.image_url}
@@ -85,8 +82,8 @@ export default function ProductDetailInfo({productDetailDto}: Props){
             </Box>
             <Card
                 sx={{
-                        height: 435,
-                        width: 400
+                        height: 500,
+                        width: 400,
                 }}
                 >
                 <CardContent>
