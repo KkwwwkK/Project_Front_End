@@ -25,17 +25,17 @@ function createData(name: string): Data {
 
 const rows = [
     createData('India'),
-    // createData('China'),
-    // createData('Italy'),
-    // createData('United States'),
-    // createData('Canada'),
-    // createData('Australia'),
-    // createData('Germany'),
-    // createData('Ireland'),
-    // createData('Mexico'),
-    // createData('Japan'),
-    // createData('France'),
-    // createData('United Kingdom'),
+    createData('China'),
+    createData('Italy'),
+    createData('United States'),
+    createData('Canada'),
+    createData('Australia'),
+    createData('Germany'),
+    createData('Ireland'),
+    createData('Mexico'),
+    createData('Japan'),
+    createData('France'),
+    createData('United Kingdom'),
     // createData('Russia'),
     // createData('Nigeria'),
     // createData('Brazil'),
@@ -84,7 +84,15 @@ export default function Transaction() {
                     </Table>
                 </TableContainer>
             </Paper>
-            <PaymentForm/>
+            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent:'center', ml: '20px'}}>
+                <Box sx={{display: 'flex', flexDirection: 'column', justifyContent:'center'}}>
+                    {/* Fixed row for Total Price */}
+                        <Typography variant="h5" pl="24px" mb="24px">
+                            Total Price: $xxx {/* Replace $xxx with actual total price */}
+                        </Typography>
+                </Box>
+                <PaymentForm/>
+            </Box>
         </Container>
     );
 }

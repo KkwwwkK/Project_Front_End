@@ -7,32 +7,41 @@ import {useEffect, useState} from "react";
 import mockData from "./response.json";
 import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
 import Box from "@mui/material/Box";
+import {useNavigate} from "react-router-dom";
 
 export default function ShoppingCart() {
     const[cartItemDto, setCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
     // const[cartItemQuantity, setCartItemQuantity] = useState<number>(0);
 
+    const navigate = useNavigate();
+
+    // Fetch User Cart
+    const fetchUserCart = async ()=> {
+        try {
+            setCartItemDto(undefined);
+            const responseCartItemDto:CartItemDto[] = await CartItemApi.getUserCart();
+            setCartItemDto(responseCartItemDto);
+        } catch(error){
+            navigate("/error");
+        }
+    }
 
     const putCartItem = async ()=>{
-        CartItemApi.putCartItem("1", "1");
+        await CartItemApi.putCartItem("1", "1");
     }
 
     // const location = useLocation();
     useEffect(() => {
-        setCartItemDto(mockData);
-        // // Get the cart items number for showing on cart logo
-        // if (cartItemDto && cartItemDto.length > 0) {
-        //     setCartItemQuantity(cartItemDto.length);
-        // }
-        putCartItem();
+        // putCartItem();
+        fetchUserCart().then();
     }, []);
-    //
+
+    // // const location = useLocation();
     // useEffect(() => {
-    //     // Update cartItemQuantity when cartItemDto changes
-    //     if (cartItemDto && cartItemDto.length > 0) {
-    //         setCartItemQuantity(cartItemDto.length);
-    //     }
-    // }, [cartItemDto]);
+    //     setCartItemDto(mockData);
+    //     putCartItem();
+    // }, []);
+
 
 
     return(

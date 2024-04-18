@@ -28,7 +28,7 @@ export default function ProductListingPage(){
     }
 
     useEffect(() => {
-        fetchAllProducts()
+        fetchAllProducts().then()
     }, []);
 
 
