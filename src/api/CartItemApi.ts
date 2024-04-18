@@ -77,3 +77,25 @@ export async function updateUserCartItemQuantity(pid:number, quantity:number){
         throw error;
     }
 }
+
+export async function removeItemByPid(pid:number){
+    const accessToken = await FirebaseAuthService.getAccessToken();
+
+    if(!accessToken){
+        throw new Error();
+    }
+
+    try{
+        await axios.delete(
+            `${baseUrl}/cart/${pid}`,
+            {
+                headers: {
+                    Authorization:`Bearer ${accessToken}`,
+                }
+            }
+        )
+    } catch(error){
+        console.log(error);
+        throw error;
+    }
+}

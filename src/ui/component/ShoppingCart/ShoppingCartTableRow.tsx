@@ -8,8 +8,10 @@ import * as CartItemApi from "../../../api/CartItemApi.ts";
 
 type Props = {
     listData: CartItemDto;
+    updateCartItem: (updatedItem: CartItemDto) => void;
+    handleRemoveCartItem: (pid: number) => void;
 }
-export default function ShoppingCartTableRow({listData}: Props){
+export default function ShoppingCartTableRow({listData, updateCartItem, handleRemoveCartItem}: Props){
     const[quantity, setQuantity] = useState<number>(listData.cart_quantity);
     const handleMinus = async ()=> {
         if(quantity > 1){
@@ -31,15 +33,29 @@ export default function ShoppingCartTableRow({listData}: Props){
         }
     }
 
-    const updateQuantity = async (newQuantity: number) => {
+    const updateQuantity =  (newQuantity: number) => {
         try {
-            await CartItemApi.updateUserCartItemQuantity(listData.pid, newQuantity);
             setQuantity(newQuantity);
+            const updatedItem = { ...listData, cart_quantity: newQuantity };
+            updateCartItem(updatedItem);
         } catch (error) {
             console.log(error);
             throw error;
         }
     };
+
+
+    const removeCartItem = async () => {
+        try {
+            await CartItemApi.removeItemByPid(listData.pid);
+            handleRemoveCartItem(listData.pid);
+        } catch(error){
+            console.log(error);
+            throw error;
+        }
+    }
+
+
     // const handlePlus = async ()=> {
     //     if(quantity < listData.stock){
     //         setQuantity((prevState:number) => (
@@ -57,8 +73,6 @@ export default function ShoppingCartTableRow({listData}: Props){
 
 
 
-
-
     return (
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell component="th" scope="row">
@@ -71,12 +85,12 @@ export default function ShoppingCartTableRow({listData}: Props){
                 }}
                 />
             </TableCell>
-            <TableCell align="center">{listData.name}</TableCell>
+            <TableCell align="center" style={{ minWidth: '150px' }}>{listData.name}</TableCell>
             <TableCell align="center">${listData.price.toLocaleString()}</TableCell>
             {/*<TableCell align="center">{listData.cart_quantity}</TableCell>*/}
             <TableCell align="center"><QuantityInput readOnly={true} quantity={quantity} handleMinus={handleMinus} handlePlus={handlePlus}/></TableCell>
-            <TableCell align="center">$ {(listData.price * quantity).toLocaleString()}</TableCell>
-            <TableCell align="center"><DeleteIcon/></TableCell>
+            <TableCell align="center" style={{ minWidth: '100px' }}>$ {(listData.price * quantity).toLocaleString()}</TableCell>
+            <TableCell align="center"><DeleteIcon onClick={removeCartItem} style={{ cursor: 'pointer' }}/></TableCell>
         </TableRow>
     );
 }

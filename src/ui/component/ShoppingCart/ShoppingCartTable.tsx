@@ -12,14 +12,45 @@ type Props={
 
 export default function ShoppingCartTable({cartItemDto}: Props){
     const[totalPrice, setTotalPrice] = useState<number>(0);
+    const[newCartItem, setNewCartItem] = useState<CartItemDto[]>(cartItemDto);
+
+    // useEffect(() => {
+    //     let newTotalPrice = 0;
+    //     cartItemDto.forEach((value)=>{
+    //         newTotalPrice += value.price * value.cart_quantity;
+    //     })
+    //     setTotalPrice(newTotalPrice)
+    // }, [cartItemDto]);
+
+    const updateTotalPrice = (items: CartItemDto[]) => {
+        let newTotalPrice = 0;
+        items.forEach((value) => {
+            newTotalPrice += value.price * value.cart_quantity;
+        });
+        setTotalPrice(newTotalPrice);
+    };
+
+    const handleUpdateCartItem = (updatedItem: CartItemDto) => {
+        const updatedItems = newCartItem.map(
+            (item) =>(
+            item.pid === updatedItem.pid ? updatedItem : item
+            ));
+        updateTotalPrice(updatedItems);
+    };
+
+    const handleRemoveCartItem = (pid: number) => {
+        const updatedItems = newCartItem.filter(
+            (item)=>(
+                item.pid !== pid
+            ))
+        setNewCartItem(updatedItems);
+        updateTotalPrice(updatedItems);
+    }
+
 
     useEffect(() => {
-        let newTotalPrice = 0;
-        cartItemDto.forEach((value)=>{
-            newTotalPrice += value.price * value.cart_quantity;
-        })
-        setTotalPrice(newTotalPrice)
-    }, [cartItemDto]);
+        updateTotalPrice(newCartItem);
+    }, [newCartItem]);
 
 
 
@@ -44,10 +75,12 @@ export default function ShoppingCartTable({cartItemDto}: Props){
                     </TableHead>
                     <TableBody>
                         {
-                            cartItemDto.map((data)=>(
+                            newCartItem.map((data)=>(
                                 <ShoppingCartTableRow
                                     key={data.pid}
                                     listData={data}
+                                    updateCartItem={handleUpdateCartItem}
+                                    handleRemoveCartItem={handleRemoveCartItem}
                                 />
                             ))
                         }

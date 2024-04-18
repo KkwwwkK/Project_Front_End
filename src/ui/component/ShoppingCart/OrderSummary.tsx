@@ -16,6 +16,7 @@ export default function OrderSummary({totalPrice}: Props) {
         setIsSticky(scrollTop > 100); // Example threshold for sticky behavior
     };
 
+
     // Attach scroll event listener when component mounts
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
