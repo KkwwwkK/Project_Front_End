@@ -4,16 +4,23 @@ import ShoppingCartTableRow from "./ShoppingCartTableRow.tsx";
 import OrderSummary from "./OrderSummary.tsx";
 import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
 import Typography from "@mui/material/Typography";
+import {useEffect, useState} from "react";
 
 type Props={
     cartItemDto: CartItemDto[];
 }
 
 export default function ShoppingCartTable({cartItemDto}: Props){
-    let totalPrice:number = 0;
-    cartItemDto.forEach((value)=>{
-        totalPrice += value.price * value.cart_quantity;
-    })
+    const[totalPrice, setTotalPrice] = useState<number>(0);
+
+    useEffect(() => {
+        let newTotalPrice = 0;
+        cartItemDto.forEach((value)=>{
+            newTotalPrice += value.price * value.cart_quantity;
+        })
+        setTotalPrice(newTotalPrice)
+    }, [cartItemDto]);
+
 
 
     return (
@@ -38,7 +45,10 @@ export default function ShoppingCartTable({cartItemDto}: Props){
                     <TableBody>
                         {
                             cartItemDto.map((data)=>(
-                                <ShoppingCartTableRow key={data.pid} listData={data}/>
+                                <ShoppingCartTableRow
+                                    key={data.pid}
+                                    listData={data}
+                                />
                             ))
                         }
                     </TableBody>

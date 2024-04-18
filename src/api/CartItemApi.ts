@@ -5,7 +5,7 @@ const baseUrl = "http://localhost:8080";
 
 
 
-export async function putCartItem(pid:string, quantity:string) {
+export async function putCartItem(pid:number, quantity:number) {
     const accessToken = await FirebaseAuthService.getAccessToken();
 
     if(!accessToken){
@@ -28,7 +28,7 @@ export async function putCartItem(pid:string, quantity:string) {
     }
 }
 
-export async function getUserCart(){
+export async function getUserCart(): Promise<CartItemDto[]> {
     const accessToken = await FirebaseAuthService.getAccessToken();
 
     if (!accessToken){
@@ -45,10 +45,33 @@ export async function getUserCart(){
             }
             );
         // Checking
-        console.log('getUserCart response:', response.data);
+        // console.log('getUserCart response:', response.data);
 
         return response.data;
 
+    } catch(error){
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function updateUserCartItemQuantity(pid:number, quantity:number){
+    const accessToken = await FirebaseAuthService.getAccessToken();
+
+    if(!accessToken){
+        throw new Error();
+    }
+
+    try{
+        await axios.patch(
+            `${baseUrl}/cart/${pid}/${quantity}`,
+            null,
+            {
+                headers: {
+                    Authorization:`Bearer ${accessToken}`,
+                }
+            }
+        )
     } catch(error){
         console.log(error);
         throw error;

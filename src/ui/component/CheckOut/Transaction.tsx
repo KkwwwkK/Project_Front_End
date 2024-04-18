@@ -62,7 +62,7 @@ export default function Transaction() {
                         <TableHead>
                             <TableRow>
                                 <TableCell align="center" colSpan={1}>
-                                    <Typography>
+                                    <Typography variant='h5'>
                                         Order Summary
                                     </Typography>
                                 </TableCell>

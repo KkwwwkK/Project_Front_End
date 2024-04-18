@@ -2,16 +2,18 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import Typography from "@mui/material/Typography";
+import {ChangeEvent} from "react";
 
 type Props = {
     quantity: number;
     handleMinus: ()=>void;
     handlePlus: ()=>void;
+    handleInputChange?: (event:ChangeEvent<HTMLInputElement>)=>void;
+    readOnly?: boolean;
 }
 
 
-export default function QuantityInput({quantity, handleMinus, handlePlus}: Props) {
+export default function QuantityInput({quantity, handleMinus, handlePlus, handleInputChange, readOnly}: Props) {
 
     // const handleInputChange = (event:ChangeEvent<HTMLInputElement>) => {
     //     const value = event.target.value;
@@ -36,19 +38,23 @@ export default function QuantityInput({quantity, handleMinus, handlePlus}: Props
             </Button>
 
             {/* Quantity Input Box */}
-            <Box sx={{display: 'flex'}}>
-                <Typography
-                            sx={{
-                                display: 'flex',
-                                width: '32px',
-                                height:'24px',
-                                justifyContent: 'center',
-                                border: 'none',
-                                borderRadius: '4px',
-                                outline: 'none',
-                            }}>
-                    {quantity}
-                </Typography>
+            <Box sx={{display: 'flex', mr: '8px'}}>
+                <input
+                    value={quantity}
+                    onChange={handleInputChange}
+                    readOnly={readOnly}
+                    style={{
+                        display: 'flex',
+                        width: '32px',
+                        height: '24px',
+                        justifyContent: 'center',
+                        border: readOnly ? 'none' : '1px solid grey',
+                        borderRadius: '4px',
+                        outline: 'none',
+                        textAlign: 'center',
+                        marginLeft: '8px', // Add margin for spacing
+                    }}
+                />
             </Box>
 
             {/* Increase Button */}

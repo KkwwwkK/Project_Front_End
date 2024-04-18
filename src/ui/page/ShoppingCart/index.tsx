@@ -4,7 +4,7 @@ import ShoppingCartTable from "../../component/ShoppingCart/ShoppingCartTable.ts
 // import OrderSummary from "../../component/ShoppingCart/OrderSummary.tsx";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
 import {useEffect, useState} from "react";
-import mockData from "./response.json";
+// import mockData from "./response.json";
 import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
 import Box from "@mui/material/Box";
 import {useNavigate} from "react-router-dom";
@@ -26,9 +26,9 @@ export default function ShoppingCart() {
         }
     }
 
-    const putCartItem = async ()=>{
-        await CartItemApi.putCartItem("1", "1");
-    }
+    // const putCartItem = async ()=>{
+    //     await CartItemApi.putCartItem(1, 1);
+    // }
 
     // const location = useLocation();
     useEffect(() => {

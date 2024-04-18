@@ -7,7 +7,9 @@ import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import QuantityInput from "../../../util/QuantityInput.tsx";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
-import {useState} from "react";
+import {ChangeEvent, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import * as CartItemApi from "../../../api/CartItemApi.ts";
 
 type Props = {
     productDetailDto: ProductDetailDto;
@@ -15,6 +17,8 @@ type Props = {
 
 export default function ProductDetailInfo({productDetailDto}: Props){
     const[quantity, setQuantity] = useState<number>(1);
+    // const navigate = useNavigate();
+
     const handleMinus = ()=> {
         if(quantity > 1){
             setQuantity((prevState:number) => (
@@ -31,20 +35,51 @@ export default function ProductDetailInfo({productDetailDto}: Props){
         }
     }
 
+    const handleInputChange = (event:ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        const parsedValue = parseInt(value);
+
+        if (!isNaN(parsedValue) && parsedValue > 1 && parsedValue < productDetailDto.stock) {
+            setQuantity(parsedValue);
+        }
+        if (value === '' || /^\d+$/.test(value)) {
+            setQuantity(parseInt(value) || 0);
+        }
+    };
+
+    const handleAddToCart = async ()=> {
+        try{
+            await CartItemApi.putCartItem(productDetailDto.pid, quantity);
+            window.alert('Item added to cart successfully!');
+        } catch(error){
+            window.alert('Failed to add item to cart. Please try again.');
+            console.log(error);
+            throw error;
+        }
+    }
+
 
     const renderAddToCart =()=> {
         if (productDetailDto.stock > 0){
             return(
                 <Box>
                     <Box sx={{display:"flex", flexDirection: "column", ml: "16px"}}>
-                        <QuantityInput quantity={quantity} handleMinus={handleMinus} handlePlus={handlePlus}/>
+                        <QuantityInput
+                            quantity={quantity}
+                            handleMinus={handleMinus}
+                            handlePlus={handlePlus}
+                            handleInputChange={handleInputChange}
+                            readOnly={false}
+                        />
                     </Box>
                     <CardActions sx={{
                         paddingLeft: '16px', // Set left padding to 16px
                         justifyContent: 'flex-start', // Align items to the left
                         marginTop: '12px'
                     }}>
-                        <Button size="small" variant="contained">Add to Cart</Button>
+                        <Button size="small" variant="contained"
+                                onClick={handleAddToCart}
+                                >Add to Cart</Button>
                     </CardActions>
                 </Box>
             )
