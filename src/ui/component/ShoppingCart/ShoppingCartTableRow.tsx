@@ -5,6 +5,8 @@ import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
 import {useState} from "react";
 import QuantityInput from "../../../util/QuantityInput.tsx";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
+import CircularProgress from "@mui/material/CircularProgress";
+import {useNavigate} from "react-router-dom";
 
 type Props = {
     listData: CartItemDto;
@@ -13,6 +15,11 @@ type Props = {
 }
 export default function ShoppingCartTableRow({listData, updateCartItem, handleRemoveCartItem}: Props){
     const[quantity, setQuantity] = useState<number>(listData.cart_quantity);
+    const[isQuantityPatching, setIsQuantityPatching] = useState<boolean>(false);
+    const[isItemDeleting, setIsItemDeleting] = useState<boolean>(false);
+
+    const navigate = useNavigate();
+
     const handleMinus = async ()=> {
         if(quantity > 1){
             setQuantity((prevState:number) => {
@@ -33,12 +40,16 @@ export default function ShoppingCartTableRow({listData, updateCartItem, handleRe
         }
     }
 
-    const updateQuantity =  (newQuantity: number) => {
+    const updateQuantity = async (newQuantity: number) => {
         try {
             setQuantity(newQuantity);
             const updatedItem = { ...listData, cart_quantity: newQuantity };
             updateCartItem(updatedItem);
+            setIsQuantityPatching(true);
+            await CartItemApi.updateUserCartItemQuantity(listData.pid, newQuantity);
+            setIsQuantityPatching(false);
         } catch (error) {
+            setIsQuantityPatching(false);
             console.log(error);
             throw error;
         }
@@ -47,9 +58,12 @@ export default function ShoppingCartTableRow({listData, updateCartItem, handleRe
 
     const removeCartItem = async () => {
         try {
+            setIsItemDeleting(true);
             await CartItemApi.removeItemByPid(listData.pid);
+            setIsItemDeleting(false);
             handleRemoveCartItem(listData.pid);
         } catch(error){
+            setIsItemDeleting(false);
             console.log(error);
             throw error;
         }
@@ -75,7 +89,7 @@ export default function ShoppingCartTableRow({listData, updateCartItem, handleRe
 
     return (
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-            <TableCell component="th" scope="row">
+            <TableCell component="th" scope="row" onClick={()=>navigate(`/product/${listData.pid}/:userId`)} style={{ cursor: 'pointer'}}>
                 <img src={listData.image_url}
                      alt="Product Image"
                     style={{
@@ -87,10 +101,13 @@ export default function ShoppingCartTableRow({listData, updateCartItem, handleRe
             </TableCell>
             <TableCell align="center" style={{ minWidth: '150px' }}>{listData.name}</TableCell>
             <TableCell align="center">${listData.price.toLocaleString()}</TableCell>
-            {/*<TableCell align="center">{listData.cart_quantity}</TableCell>*/}
-            <TableCell align="center"><QuantityInput readOnly={true} quantity={quantity} handleMinus={handleMinus} handlePlus={handlePlus}/></TableCell>
+            <TableCell align="center"><QuantityInput readOnly={true} quantity={quantity} handleMinus={handleMinus} handlePlus={handlePlus} isLoading={isQuantityPatching}/></TableCell>
             <TableCell align="center" style={{ minWidth: '100px' }}>$ {(listData.price * quantity).toLocaleString()}</TableCell>
-            <TableCell align="center"><DeleteIcon onClick={removeCartItem} style={{ cursor: 'pointer' }}/></TableCell>
+                {
+                    isItemDeleting
+                        ?<TableCell align="center"><CircularProgress size={20} color="success"/></TableCell>
+                        :<TableCell align="center"><DeleteIcon onClick={removeCartItem} style={{ cursor: 'pointer'}}/></TableCell>
+                }
         </TableRow>
     );
 }

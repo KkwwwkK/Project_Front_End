@@ -1,4 +1,4 @@
-import {Container} from "@mui/material";
+import {Alert, AlertTitle, Container} from "@mui/material";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import QuantityInput from "../../../util/QuantityInput.tsx";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
 import {ChangeEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
 
 type Props = {
@@ -17,6 +16,9 @@ type Props = {
 
 export default function ProductDetailInfo({productDetailDto}: Props){
     const[quantity, setQuantity] = useState<number>(1);
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
+    const [isAddingToCart, setIsAddingToCart] = useState(false);
     // const navigate = useNavigate();
 
     const handleMinus = ()=> {
@@ -49,12 +51,23 @@ export default function ProductDetailInfo({productDetailDto}: Props){
 
     const handleAddToCart = async ()=> {
         try{
+            setIsAddingToCart(true);
             await CartItemApi.putCartItem(productDetailDto.pid, quantity);
-            window.alert('Item added to cart successfully!');
+            setIsAddingToCart(false);
+            setShowSuccessAlert(true);
+            // Automatically hide success alert after 1 second
+            setTimeout(() => {
+                setShowSuccessAlert(false);
+            }, 1000);
         } catch(error){
-            window.alert('Failed to add item to cart. Please try again.');
+            setShowErrorAlert(true);
+            setIsAddingToCart(false);
+            // Automatically hide error alert after 1 second
+            setTimeout(() => {
+                setShowErrorAlert(false);
+            }, 1000);
+
             console.log(error);
-            throw error;
         }
     }
 
@@ -79,6 +92,7 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                     }}>
                         <Button size="small" variant="contained"
                                 onClick={handleAddToCart}
+                                disabled={isAddingToCart}
                                 >Add to Cart</Button>
                     </CardActions>
                 </Box>
@@ -149,6 +163,25 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                     renderAddToCart()
                 }
             </Card>
+            <Box sx={{
+                position: 'absolute',
+                bottom: '20px', // Adjust bottom spacing as needed
+                width: '16vw', // Take full width of the container
+                height: '8vh',
+                textAlign: 'center', // Center align the alerts
+            }}>
+                {showSuccessAlert && (
+                    <Alert severity="success" onClose={() => setShowSuccessAlert(false)}>
+                        <AlertTitle>Item Added!</AlertTitle>
+                    </Alert>
+                )}
+
+                {showErrorAlert && (
+                    <Alert severity="error" onClose={() => setShowErrorAlert(false)}>
+                        <AlertTitle>Failed to Add!</AlertTitle>
+                    </Alert>
+                )}
+            </Box>
         </Container>
     )
 }

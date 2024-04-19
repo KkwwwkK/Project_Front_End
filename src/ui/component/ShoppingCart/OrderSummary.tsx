@@ -3,12 +3,14 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import {Container} from "@mui/material";
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 type Props={
     totalPrice : number;
 }
 export default function OrderSummary({totalPrice}: Props) {
     const [isSticky, setIsSticky] = useState(false);
+    const navigate = useNavigate();
 
     // Handle scroll event to toggle sticky behavior
     const handleScroll = () => {
@@ -41,7 +43,7 @@ export default function OrderSummary({totalPrice}: Props) {
                     Total Price:
                     $ {totalPrice.toLocaleString()}
                 </Typography>
-                <Button variant="contained">
+                <Button onClick={()=>{navigate("/checkout/:transactionId")}} variant="contained">
                     Checkout
                 </Button>
             </Box>
