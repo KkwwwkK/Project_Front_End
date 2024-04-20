@@ -14,6 +14,7 @@ type params = {
 }
 
 export default function ProductDetail() {
+
     const {productId} = useParams<params>();
     // const location = useLocation();
     const [productDetailDto, setProductDetailDto]

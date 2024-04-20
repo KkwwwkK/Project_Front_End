@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import {Container} from "@mui/material";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
+import * as TransactionApi from "../../../api/TransactionApi.ts"
 
 type Props={
     totalPrice : number;
@@ -11,12 +13,33 @@ type Props={
 export default function OrderSummary({totalPrice}: Props) {
     const [isSticky, setIsSticky] = useState(false);
     const navigate = useNavigate();
+    const [transactionDto, setTransactionDto] = useState<TransactionDto | undefined>(undefined);
+
 
     // Handle scroll event to toggle sticky behavior
     const handleScroll = () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         setIsSticky(scrollTop > 100); // Example threshold for sticky behavior
     };
+
+    const fetchTransactionDto = async() => {
+        try {
+            setTransactionDto(undefined);
+            const responseTransactionDto = await TransactionApi.putTransaction();
+            setTransactionDto(responseTransactionDto);
+        } catch(error){
+            console.log(error);
+            navigate("/error")
+        }
+    }
+
+    const handleCheckout = async() => {
+        fetchTransactionDto().then();
+        if (transactionDto){
+            navigate(`/checkout/${transactionDto.tid}`)
+        }
+    }
+
 
 
     // Attach scroll event listener when component mounts
@@ -43,7 +66,7 @@ export default function OrderSummary({totalPrice}: Props) {
                     Total Price:
                     $ {totalPrice.toLocaleString()}
                 </Typography>
-                <Button onClick={()=>{navigate("/checkout/:transactionId")}} variant="contained">
+                <Button onClick={handleCheckout} variant="contained">
                     Checkout
                 </Button>
             </Box>

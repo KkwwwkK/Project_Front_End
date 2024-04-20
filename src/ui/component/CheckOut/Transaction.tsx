@@ -12,6 +12,7 @@ import PaymentForm from "./PaymentForm.tsx";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import TransactionRow from "./TransactionRow.tsx";
+import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
 
 
 
@@ -41,7 +42,11 @@ const rows = [
     // createData('Brazil'),
 ];
 
-export default function Transaction() {
+type Props = {
+    transactionByTidDto: TransactionDto;
+}
+
+export default function Transaction({transactionByTidDto}: Props) {
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -69,17 +74,27 @@ export default function Transaction() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row, index) => {
-                                    return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                                            <TableCell align="left">
-                                                <TransactionRow/>
-                                            </TableCell>
-                                        </TableRow>
-                                    );
-                                })}
+                            {/*{rows*/}
+                            {/*    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)*/}
+                            {/*    .map((row, index) => {*/}
+                            {/*        return (*/}
+                            {/*            <TableRow hover role="checkbox" tabIndex={-1} key={index}>*/}
+                            {/*                <TableCell align="left">*/}
+                            {/*                    <TransactionRow/>*/}
+                            {/*                </TableCell>*/}
+                            {/*            </TableRow>*/}
+                            {/*        );*/}
+                            {/*    })}*/}
+                            {
+                                transactionByTidDto.Items.map((data)=>(
+                                    <TableRow hover role="checkbox">
+                                        <TableCell align="left">
+                                            <TransactionRow key={transactionByTidDto.tid}
+                                                            listData={data}/>
+                                        </TableCell>
+                                    </TableRow>
+                                ))
+                            }
                         </TableBody>
                     </Table>
                 </TableContainer>
@@ -88,7 +103,7 @@ export default function Transaction() {
                 <Box sx={{display: 'flex', flexDirection: 'column', justifyContent:'center'}}>
                     {/* Fixed row for Total Price */}
                         <Typography variant="h5" pl="24px" mb="24px">
-                            Total Price: $xxx {/* Replace $xxx with actual total price */}
+                            Total Price: ${transactionByTidDto.total.toLocaleString()}
                         </Typography>
                 </Box>
                 <PaymentForm/>

@@ -70,23 +70,6 @@ export default function ShoppingCartTableRow({listData, updateCartItem, handleRe
     }
 
 
-    // const handlePlus = async ()=> {
-    //     if(quantity < listData.stock){
-    //         setQuantity((prevState:number) => (
-    //             prevState + 1
-    //         ))
-    //     }
-    //     try {
-    //         await CartItemApi.updateUserCartItemQuantity(listData.pid, listData.cart_quantity);
-    //     } catch (error) {
-    //         console.log(error);
-    //         throw error;
-    //     }
-
-    // }
-
-
-
     return (
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell component="th" scope="row" onClick={()=>navigate(`/product/${listData.pid}/:userId`)} style={{ cursor: 'pointer'}}>

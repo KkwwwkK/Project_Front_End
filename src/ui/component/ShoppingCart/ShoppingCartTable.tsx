@@ -14,15 +14,6 @@ export default function ShoppingCartTable({cartItemDto}: Props){
     const[totalPrice, setTotalPrice] = useState<number>(0);
     const[newCartItem, setNewCartItem] = useState<CartItemDto[]>(cartItemDto);
 
-
-    // useEffect(() => {
-    //     let newTotalPrice = 0;
-    //     cartItemDto.forEach((value)=>{
-    //         newTotalPrice += value.price * value.cart_quantity;
-    //     })
-    //     setTotalPrice(newTotalPrice)
-    // }, [cartItemDto]);
-
     const updateTotalPrice = (items: CartItemDto[]) => {
         let newTotalPrice = 0;
         items.forEach((value) => {
