@@ -1,6 +1,6 @@
 import NavList from "../../component/NavList/NavList.tsx";
-import {useLocation} from "react-router-dom";
-import {Container} from "@mui/material";
+// import {useLocation} from "react-router-dom";
+// import {Container} from "@mui/material";
 import ThankYouDesign from "../../component/ThankYou/ThankYouDesign.tsx";
 import Box from "@mui/material/Box";
 

@@ -52,7 +52,7 @@ export default function ShoppingCart() {
 
     return(
         <Box className="shopping-cart-container">
-            <NavList />
+            <NavList/>
             {
                 cartItemDto &&
                 <ShoppingCartTable cartItemDto={cartItemDto}/>

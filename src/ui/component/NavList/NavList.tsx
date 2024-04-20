@@ -62,7 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 // type Props = {
-//     cartItemQuantity: number
+//     cartItemQuantity?: number
 // }
 
 export default function NavList() {
@@ -147,7 +147,7 @@ export default function NavList() {
                             }}
                             size="large" aria-label="show 4 new mails" color="inherit"
                             >
-                            <Badge badgeContent={3} color="error">
+                            <Badge badgeContent={1} color="error">
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
