@@ -34,7 +34,7 @@ export default function OrderSummary({totalPrice}: Props) {
     }
 
     const handleCheckout = async() => {
-        fetchTransactionDto().then();
+        await fetchTransactionDto().then();
         if (transactionDto){
             navigate(`/checkout/${transactionDto.tid}`)
         }

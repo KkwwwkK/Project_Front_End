@@ -1,7 +1,7 @@
 import NavList from "../../component/NavList/NavList.tsx";
 import ProductItemList from "../../component/ProductListing/ProductItemList.tsx";
 import {useNavigate} from "react-router-dom";
-import mockData from "./response.json";
+// import mockData from "./response.json";
 import * as ProductListApi from "../../../api/GetAllProductApi.tsx"
 import {ProductListDto} from "../../../data/ProductList/ProductListDto.tsx";
 import {useEffect, useState} from "react";
@@ -32,9 +32,9 @@ export default function ProductListingPage(){
     }, []);
 
 
-    useEffect(() => {
-        setProductListDto(mockData)
-    }, []);
+    // useEffect(() => {
+    //     setProductListDto(mockData)
+    // }, []);
 
     return(
         <>

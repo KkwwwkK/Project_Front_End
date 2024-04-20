@@ -4,15 +4,15 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 const slideImages = [
     {
-        url: 'https://wallpapers.com/images/high/windows-techno-logo-xfej8mbbg1lbamrt.webp',
+        url: 'https://wallpapers.com/images/high/white-power-button-computer-screen-lwszyg7jnqf7gfgb.webp',
         caption: 'Slide 1'
     },
     {
-        url: 'https://wallpapers.com/images/high/techno-robot-closeup-08x9hy7r0uo9g26h.webp',
+        url: 'https://wallpapers.com/images/high/connected-chains-of-dots-and-lines-8w53afda4c6ie6kc.webp',
         caption: 'Slide 2'
     },
     {
-        url: 'https://wallpapers.com/images/high/glowing-techno-speakers-laftv0bomxhkvh1c.webp',
+        url: 'https://wallpapers.com/images/high/techno-robot-closeup-08x9hy7r0uo9g26h.webp',
         caption: 'Slide 3'
     },
 ];

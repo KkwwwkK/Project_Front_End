@@ -1,6 +1,8 @@
 import * as FirebaseAuthService from "../authService/FirebaseAuthService.tsx";
 import axios from "axios";
 import {CartItemDto} from "../data/CartItem/CartItemDto.ts";
+
+
 const baseUrl = "http://localhost:8080";
 
 

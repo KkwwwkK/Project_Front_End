@@ -1,7 +1,9 @@
 import * as FirebaseAuthService from "../authService/FirebaseAuthService.tsx";
 import axios from "axios";
-const baseUrl = "http://localhost:8080";
 import {TransactionDto} from "../data/Transaction/TransactionDto.tsx";
+
+
+const baseUrl = "http://localhost:8080";
 
 
 export async function putTransaction(): Promise<TransactionDto>{

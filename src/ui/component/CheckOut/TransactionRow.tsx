@@ -21,7 +21,7 @@ export default function TransactionRow({listData}: Props){
                             {listData.product.name}
                         </Typography>
                     </Box>
-                    <Box sx={{display: 'flex', flexDirection: 'row'}}>
+                    <Box sx={{display: 'flex', flexDirection: 'row', width: '20vw'}}>
                         <Box sx={{display: 'flex', flexDirection: 'row', marginRight: '16px'}}>
                             <Box>
                                 unit price${listData.product.price.toLocaleString()}: x

@@ -5,6 +5,7 @@ import LoginPage from "../ui/page/LoginPage";
 import ShoppingCart from "../ui/page/ShoppingCart";
 import Checkout from "../ui/page/Checkout";
 import ErrorPage from "../ui/component/ErrorPage/ErrorPage.tsx";
+import ThankYou from "../ui/page/ThankYou";
 
 export const router = createBrowserRouter([
     {
@@ -27,10 +28,10 @@ export const router = createBrowserRouter([
         path: "/checkout/:transactionId",
         element: <Checkout/>
     },
-    // {
-    //     path: "/thankyou",
-    //     element: <ThankYou/>
-    // }
+    {
+        path: "/thankyou",
+        element: <ThankYou/>
+    },
     {
         path:"/error",
         element: <ErrorPage/>
