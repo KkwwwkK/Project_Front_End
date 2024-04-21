@@ -6,7 +6,6 @@ import {useEffect, useState} from "react";
 import {UserData} from "./data/user/UserData.tsx";
 import * as FirebaseAuthService from "./authService/FirebaseAuthService.tsx";
 import {LoginUserContext} from "./context/LoginUserContext.ts";
-import {CartItemDto} from "./data/CartItem/CartItemDto.ts";
 
 function App() {
     const[loginUser, setLoginUser] = useState<UserData | null | undefined >(undefined);
@@ -22,9 +21,9 @@ function App() {
 
   return (
     <>
-        <LoginUserContext.Provider value={loginUser}>
-            <RouterProvider router={router}/>
-        </LoginUserContext.Provider>
+            <LoginUserContext.Provider value={loginUser}>
+                <RouterProvider router={router}/>
+            </LoginUserContext.Provider>
     </>
   )
 }

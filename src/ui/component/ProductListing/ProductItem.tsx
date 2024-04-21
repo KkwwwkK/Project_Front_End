@@ -17,6 +17,7 @@ type Props = {
 }
 
 export default function ProductItem({listData}: Props) {
+    // console.log("listData:", listData);
     const navigate = useNavigate();
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
@@ -86,10 +87,25 @@ export default function ProductItem({listData}: Props) {
                 </Box>
             </CardActionArea>
             <CardActions sx={{ display: 'flex', justifyContent: 'center', mt: '-47px'}}>
-                {listData.has_stock ? (
-                    <Button size="small" variant="contained" onClick={handleAddToCart} disabled={isAddingToCart}>Add to Cart</Button>
+                {listData.has_stock || (listData.stock && listData.stock > 0) ? (
+                    <Button size="small" variant="contained" onClick={handleAddToCart} disabled={isAddingToCart}
+                            sx={{
+                                backgroundColor: '#212121', // Background color
+                                color: '#fff', // Font color
+                                '&:hover': {
+                                    backgroundColor: '#333', // Hover background color (optional)
+                                },
+                            }}
+                    >Add to Cart</Button>
                 ) : (
-                    <Button size="small" variant="contained">Out of Stock</Button>
+                    <Button size="small" variant="contained"
+                            sx={{
+                                backgroundColor: 'grey', // Background color
+                                color: 'white', // Font color
+                                '&:hover': {
+                                    backgroundColor: 'grey', // Hover background color (optional)
+                                },
+                            }}>Out of Stock</Button>
                 )}
             </CardActions>
         </Card>

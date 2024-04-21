@@ -5,7 +5,7 @@ import ProductDetailInfo from "../../component/ProductDetailInfo/ProductDetailIn
 import {useEffect, useState} from "react";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
 // import ErrorPage from "../../component/ErrorPage/ErrorPage.tsx";
-import * as ProductDetailApi from "../../../api/GetProductByIdApi.tsx"
+import * as ProductDetailApi from "../../../api/ProductApi.tsx"
 import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 
 type params = {
@@ -15,10 +15,10 @@ type params = {
 
 export default function ProductDetail() {
 
-    const {productId} = useParams<params>();
     // const location = useLocation();
     const [productDetailDto, setProductDetailDto]
         = useState<ProductDetailDto | undefined>(undefined);
+    const {productId} = useParams<params>();
 
     const navigate = useNavigate();
     const fetchProductDetail = async (productId: string): Promise<void>=>  {

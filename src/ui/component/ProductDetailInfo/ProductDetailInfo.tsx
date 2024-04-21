@@ -93,6 +93,13 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                         <Button size="small" variant="contained"
                                 onClick={handleAddToCart}
                                 disabled={isAddingToCart}
+                                sx={{
+                                    backgroundColor: '#212121', // Background color
+                                    color: '#fff', // Font color
+                                    '&:hover': {
+                                        backgroundColor: '#333', // Hover background color (optional)
+                                    },
+                                }}
                                 >Add to Cart</Button>
                     </CardActions>
                 </Box>

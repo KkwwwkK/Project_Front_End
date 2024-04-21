@@ -11,7 +11,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMicrochip} from "@fortawesome/free-solid-svg-icons";
 import {Link, useNavigate} from 'react-router-dom';
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {UserData} from "../../../data/user/UserData.tsx";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import Stack from "@mui/material/Stack";
@@ -20,8 +20,23 @@ import Spinner from "../../../util/Spinner.tsx";
 import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.tsx";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
-
-const Search = styled('div')(({ theme }) => ({
+//
+// const Search = styled('div')(({ theme }) => ({
+//     position: 'relative',
+//     borderRadius: theme.shape.borderRadius,
+//     backgroundColor: alpha(theme.palette.common.white, 0.15),
+//     '&:hover': {
+//         backgroundColor: alpha(theme.palette.common.white, 0.25),
+//     },
+//     marginRight: theme.spacing(2),
+//     marginLeft: 0,
+//     width: '100%',
+//     [theme.breakpoints.up('sm')]: {
+//         marginLeft: theme.spacing(3),
+//         width: 'auto',
+//     },
+// }));
+const SearchContainer = styled('form')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -68,6 +83,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function NavList() {
     const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
     const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (searchQuery.trim() !== '') {
+            navigate(`/product/all/${searchQuery}`); // Navigate to SearchResultPage with search query
+            setSearchQuery(''); // Reset search query after navigation
+        }
+    };
+
+    const handleShoppingCartClick = () => {
+        if (!loginUser) {
+            // No user logged in, navigate to login page
+            navigate('/login');
+        } else {
+            // User logged in, navigate to cart item page
+            navigate('/shoppingcart');
+        }
+    };
 
     const renderLoginUser = ()=>{
         if (loginUser){
@@ -130,21 +168,20 @@ export default function NavList() {
                     >
                         Smart Home
                     </Typography>
-                    <Search>
+                    <SearchContainer  onSubmit={handleSearchSubmit}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
+                            onChange={handleSearchInputChange}
                         />
-                    </Search>
+                    </SearchContainer>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton
-                            onClick={()=>{
-                                navigate("/shoppingcart")
-                            }}
+                            onClick={handleShoppingCartClick}
                             size="large" aria-label="show 4 new mails" color="inherit"
                             >
                             <Badge badgeContent={1} color="error">
@@ -166,7 +203,6 @@ export default function NavList() {
                     </Box>
                 </Toolbar>
             </AppBar>
-
         </Box>
     );
 }

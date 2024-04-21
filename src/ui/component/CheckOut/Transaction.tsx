@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,41 +6,15 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import {Container, Divider} from "@mui/material";
+import {Container} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import PaymentForm from "./PaymentForm.tsx";
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
+// import Stack from "@mui/material/Stack";
 import TransactionRow from "./TransactionRow.tsx";
 import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
 
 
-
-interface Data {
-    name: string;
-}
-
-function createData(name: string): Data {
-    return { name };
-}
-
-const rows = [
-    createData('India'),
-    createData('China'),
-    createData('Italy'),
-    createData('United States'),
-    createData('Canada'),
-    createData('Australia'),
-    createData('Germany'),
-    createData('Ireland'),
-    createData('Mexico'),
-    createData('Japan'),
-    createData('France'),
-    createData('United Kingdom'),
-    // createData('Russia'),
-    // createData('Nigeria'),
-    // createData('Brazil'),
-];
 
 type Props = {
     transactionByTidDto: TransactionDto;
@@ -48,8 +22,8 @@ type Props = {
 
 export default function Transaction({transactionByTidDto}: Props) {
 
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    // const [page, setPage] = React.useState(0);
+    // const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
 
     return (
@@ -60,7 +34,7 @@ export default function Transaction({transactionByTidDto}: Props) {
         }}>
             <Paper sx={{
                 display: 'flex',
-                width: '80vw',
+                minWidth: '36vw',
                 }}>
                 <TableContainer sx={{ maxHeight: 585 }}>
                     <Table stickyHeader aria-label="sticky table">
@@ -74,39 +48,48 @@ export default function Transaction({transactionByTidDto}: Props) {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {/*{rows*/}
-                            {/*    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)*/}
-                            {/*    .map((row, index) => {*/}
-                            {/*        return (*/}
-                            {/*            <TableRow hover role="checkbox" tabIndex={-1} key={index}>*/}
-                            {/*                <TableCell align="left">*/}
-                            {/*                    <TransactionRow/>*/}
-                            {/*                </TableCell>*/}
-                            {/*            </TableRow>*/}
-                            {/*        );*/}
-                            {/*    })}*/}
-                            {
-                                transactionByTidDto.Items.map((data)=>(
-                                    <TableRow hover role="checkbox">
+                            {/*{*/}
+                            {/*    transactionByTidDto.Items.map((data)=>(*/}
+                            {/*        <TableRow hover role="checkbox">*/}
+                            {/*            <TableCell align="left">*/}
+                            {/*                <TransactionRow key={transactionByTidDto.tid}*/}
+                            {/*                                listData={data}/>*/}
+                            {/*            </TableCell>*/}
+                            {/*        </TableRow>*/}
+                            {/*    ))*/}
+                            {/*}*/}
+                            {transactionByTidDto.Items.length > 0 ? (
+                                transactionByTidDto.Items.map((data) => (
+                                    <TableRow hover role="checkbox" key={data.tpid}>
                                         <TableCell align="left">
-                                            <TransactionRow key={transactionByTidDto.tid}
-                                                            listData={data}/>
+                                            <TransactionRow listData={data} />
                                         </TableCell>
                                     </TableRow>
                                 ))
-                            }
+                            ) : (
+                                <TableRow>
+                                    <TableCell align="center" colSpan={1}>
+                                        <Typography variant="body1">No products found</Typography>
+                                    </TableCell>
+                                </TableRow>
+                            )}
                         </TableBody>
                     </Table>
                 </TableContainer>
             </Paper>
-            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent:'center', ml: '20px'}}>
-                <Box sx={{display: 'flex', flexDirection: 'column', justifyContent:'center'}}>
+            <Box sx={{display: 'flex', flexDirection:
+                    'column', justifyContent:'center',
+                mt:'8px', ml: '20px',
+
+            }}>
+                <Box sx={{display: 'flex', flexDirection: 'column', justifyContent:'center',
+                    }}>
                     {/* Fixed row for Total Price */}
                         <Typography variant="h5" pl="24px" mb="24px">
                             Total Price: ${transactionByTidDto.total.toLocaleString()}
                         </Typography>
                 </Box>
-                <PaymentForm/>
+                <PaymentForm transactionByTidDto={transactionByTidDto}/>
             </Box>
         </Container>
     );

@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import {useNavigate} from "react-router-dom";
 import {UserData} from "../../../data/user/UserData.tsx";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
+import {isAxiosError} from "axios";
 
 export default function ShoppingCart() {
     const[cartItemDto, setCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
@@ -25,8 +26,14 @@ export default function ShoppingCart() {
             setCartItemDto(undefined);
             const responseCartItemDto:CartItemDto[] = await CartItemApi.getUserCart();
             setCartItemDto(responseCartItemDto);
+
         } catch(error){
-            navigate("/error");
+            if (isAxiosError(error) && error.response && error.response.status === 404) {
+                setCartItemDto([]);
+            } else {
+                // For other errors, navigate to error page or handle accordingly
+                navigate('/error');
+            }
         }
     }
 

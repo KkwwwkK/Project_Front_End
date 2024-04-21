@@ -4,4 +4,5 @@ export interface ProductListDto {
     image_url: string;
     price:     number;
     has_stock: boolean;
+    stock?: number;
 }

@@ -22,31 +22,31 @@ export default function Checkout() {
     const loginUser = useContext<UserData | undefined | null>(LoginUserContext);
     const {transactionId} = useParams<params>();
     const navigate = useNavigate();
-    //
-    // const fetchTransactionByTid = async (transactionId: string): Promise<void>=> {
-    //     try {
-    //         setTransactionByTidDto(undefined);
-    //         const responseTransactionByTidDto = await TransactionApi.getTransaction(transactionId);
-    //         setTransactionByTidDto(responseTransactionByTidDto);
-    //     } catch(error){
-    //         navigate("/error");
-    //     }
-    // }
-    //
-    // useEffect(() => {
-    //     if(loginUser){
-    //         if (transactionId){
-    //             fetchTransactionByTid(transactionId).then();
-    //         } else {
-    //             navigate("/error")
-    //         }
-    //     }
-    //
-    // }, [loginUser]);
+
+    const fetchTransactionByTid = async (transactionId: string): Promise<void>=> {
+        try {
+            setTransactionByTidDto(undefined);
+            const responseTransactionByTidDto = await TransactionApi.getTransaction(transactionId);
+            setTransactionByTidDto(responseTransactionByTidDto);
+        } catch(error){
+            navigate("/error");
+        }
+    }
 
     useEffect(() => {
-        setTransactionByTidDto(mockData)
-    }, []);
+        if(loginUser){
+            if (transactionId){
+                fetchTransactionByTid(transactionId).then();
+            } else {
+                navigate("/error")
+            }
+        }
+
+    }, [loginUser]);
+
+    // useEffect(() => {
+    //     setTransactionByTidDto(mockData)
+    // }, []);
 
     return(
         <Container sx={{display: 'flex', width: '100vw', flexDirection: 'row', padding: '0 0', margin: '36px'}}>

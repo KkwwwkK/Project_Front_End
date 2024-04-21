@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
 import * as TransactionApi from "../../../api/TransactionApi.ts"
+import LoadingContainer from "./LoadingContainer.tsx";
 
 type Props={
     totalPrice : number;
@@ -13,8 +14,8 @@ type Props={
 export default function OrderSummary({totalPrice}: Props) {
     const [isSticky, setIsSticky] = useState(false);
     const navigate = useNavigate();
-    const [transactionDto, setTransactionDto] = useState<TransactionDto | undefined>(undefined);
-
+    // const [transactionDto, setTransactionDto] = useState<TransactionDto | undefined>(undefined);
+    const [isPuttingTransaction, setIsPuttingTransaction] = useState<boolean>(false);
 
     // Handle scroll event to toggle sticky behavior
     const handleScroll = () => {
@@ -22,23 +23,37 @@ export default function OrderSummary({totalPrice}: Props) {
         setIsSticky(scrollTop > 100); // Example threshold for sticky behavior
     };
 
-    const fetchTransactionDto = async() => {
+    const handleCheckout = async () => {
         try {
-            setTransactionDto(undefined);
-            const responseTransactionDto = await TransactionApi.putTransaction();
-            setTransactionDto(responseTransactionDto);
-        } catch(error){
-            console.log(error);
-            navigate("/error")
+            setIsPuttingTransaction(true);
+            const responseTransactionDto: TransactionDto = await TransactionApi.putTransaction();
+            setIsPuttingTransaction(false);
+            navigate(`/checkout/${responseTransactionDto.tid}`);
+        } catch (error) {
+            console.error('Error fetching transaction:', error);
+            navigate('/error');
         }
-    }
+    };
 
-    const handleCheckout = async() => {
-        await fetchTransactionDto().then();
-        if (transactionDto){
-            navigate(`/checkout/${transactionDto.tid}`)
-        }
-    }
+    // const fetchTransactionDto = async() => {
+    //     try {
+    //         setTransactionDto(undefined);
+    //         const responseTransactionDto = await TransactionApi.putTransaction();
+    //         setTransactionDto(responseTransactionDto);
+    //     } catch(error){
+    //         console.log(error);
+    //         navigate("/error")
+    //     }
+    // }
+    //
+    // const handleCheckout = async() => {
+    //     setIsPuttingTransaction(true);
+    //     await fetchTransactionDto().then();
+    //     setIsPuttingTransaction(false);
+    //     if (transactionDto && isPuttingTransaction === false){
+    //         navigate(`/checkout/${transactionDto.tid}`)
+    //     }
+    // }
 
 
 
@@ -66,9 +81,34 @@ export default function OrderSummary({totalPrice}: Props) {
                     Total Price:
                     $ {totalPrice.toLocaleString()}
                 </Typography>
-                <Button onClick={handleCheckout} variant="contained">
-                    Checkout
-                </Button>
+                {isPuttingTransaction ? (
+                    <LoadingContainer /> // Show loading spinner
+                ) : (
+                    <Button
+                        onClick={handleCheckout}
+                        variant="contained"
+                        disabled={totalPrice === 0} // Disable button if totalPrice is 0
+                        sx={{
+                            backgroundColor: '#212121',
+                            color: '#fff',
+                            '&:hover': {
+                                backgroundColor: '#333',
+                            },
+                        }}
+                    >
+                        Checkout
+                    </Button>
+                )}
+                {/*<Button onClick={handleCheckout} variant="contained"*/}
+                {/*        sx={{*/}
+                {/*            backgroundColor: '#212121', // Background color*/}
+                {/*            color: '#fff', // Font color*/}
+                {/*            '&:hover': {*/}
+                {/*                backgroundColor: '#333', // Hover background color (optional)*/}
+                {/*            },*/}
+                {/*        }}>*/}
+                {/*    Checkout*/}
+                {/*</Button>*/}
             </Box>
         </Container>
     )

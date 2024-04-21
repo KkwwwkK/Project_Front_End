@@ -9,13 +9,13 @@ type Props = {
 export default function TransactionRow({listData}: Props){
     return(
         <Container>
-            <Box sx={{display: 'flex', flexDirection: 'row'}}>
+            <Box sx={{display: 'flex', flexDirection: 'row', mt: '4px'}}>
                 <Box sx={{display: 'flex', marginRight: '32px'}}>
                     <img src={listData.product.image_url}
                          style={{ width: '100px', height: '100px', objectFit: 'cover'}}
                     />
                 </Box>
-                <Box sx={{display: 'flex', flexDirection: 'column'}}>
+                <Box sx={{display: 'flex', flexDirection: 'column', mt:'4px'}}>
                     <Box sx={{display: 'flex', marginBottom: '32px'}}>
                         <Typography>
                             {listData.product.name}
@@ -24,10 +24,10 @@ export default function TransactionRow({listData}: Props){
                     <Box sx={{display: 'flex', flexDirection: 'row', width: '20vw'}}>
                         <Box sx={{display: 'flex', flexDirection: 'row', marginRight: '16px'}}>
                             <Box>
-                                unit price${listData.product.price.toLocaleString()}: x
+                                unit price: ${listData.product.price.toLocaleString()}
                             </Box>
-                            <Box>
-                                {listData.quantity}
+                            <Box sx={{display: 'flex', margin: ' 0 12px'}}>
+                                x {listData.quantity}
                             </Box>
                         </Box>
                         <Box>

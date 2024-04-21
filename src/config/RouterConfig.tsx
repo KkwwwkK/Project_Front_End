@@ -6,6 +6,7 @@ import ShoppingCart from "../ui/page/ShoppingCart";
 import Checkout from "../ui/page/Checkout";
 import ErrorPage from "../ui/component/ErrorPage/ErrorPage.tsx";
 import ThankYou from "../ui/page/ThankYou";
+import SearchResultPage from "../ui/page/SearchResult";
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
     {
         path: "/product/:productId/:userId",
         element: <ProductDetail/>
+    },
+    {
+        path: "/product/all/:userInput",
+        element: <SearchResultPage/>
     },
     {
         path: "/shoppingcart",

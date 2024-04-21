@@ -6,6 +6,7 @@ import {ChangeEvent} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
+
 type Props = {
     quantity: number;
     handleMinus: ()=>void;
@@ -36,6 +37,7 @@ export default function QuantityInput({quantity, handleMinus, handlePlus, handle
                         minWidth: '40px', // Adjust width as needed
                         padding: '8px 0', // Adjust padding for button size
                         borderRadius: '50%', // Rounded corners
+
                     }}>
                 <RemoveIcon/>
             </Button>

@@ -15,7 +15,7 @@ export async function putTransaction(): Promise<TransactionDto>{
 
     try{
         const response = await axios.put<TransactionDto>(
-            `${baseUrl}/prepare`,
+            `${baseUrl}/transaction/prepare`,
             null,
             {
                 headers: {
@@ -39,7 +39,7 @@ export async function getTransaction(tid:string): Promise<TransactionDto>{
 
     try{
         const response = await axios.get<TransactionDto>(
-            `${baseUrl}/${tid}`,
+            `${baseUrl}/transaction/${tid}`,
             {
                 headers: {
                     Authorization:`Bearer ${accessToken}`,
@@ -62,7 +62,7 @@ export async function processTransactionByTid(tid: number){
 
     try{
         await axios.patch<TransactionDto>(
-            `${baseUrl}/${tid}/pay`,
+            `${baseUrl}/transaction/${tid}/pay`,
             null,
             {
                 headers: {
@@ -85,7 +85,7 @@ export async function finishTransactionByTid(tid: number){
 
     try{
         await axios.patch<TransactionDto>(
-            `${baseUrl}/${tid}/finish`,
+            `${baseUrl}/transaction/${tid}/finish`,
             null,
             {
                 headers: {

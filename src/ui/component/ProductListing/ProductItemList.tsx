@@ -10,6 +10,7 @@ type Props = {
 }
 
 export default function ProductItemList({productListDto}:Props) {
+    // console.log("Product List Dto:", productListDto);
     return (
         <Container>
             <Grid container spacing={4}>

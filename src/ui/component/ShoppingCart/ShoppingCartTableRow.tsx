@@ -89,7 +89,10 @@ export default function ShoppingCartTableRow({listData, updateCartItem, handleRe
                 {
                     isItemDeleting
                         ?<TableCell align="center"><CircularProgress size={20} color="success"/></TableCell>
-                        :<TableCell align="center"><DeleteIcon onClick={removeCartItem} style={{ cursor: 'pointer'}}/></TableCell>
+                        :<TableCell align="center"><DeleteIcon onClick={removeCartItem} style={{
+                            cursor: 'pointer',
+                            color: '#757575', // Bright silver color for the icon
+                        }}/></TableCell>
                 }
         </TableRow>
     );
