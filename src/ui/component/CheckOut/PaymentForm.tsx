@@ -94,7 +94,7 @@ export default function PaymentForm({transactionByTidDto }: Props) {
                         justifyContent: 'space-between',
                         p: 3,
                         height: { xs: 300, sm: 350, md: 375 },
-                        width: '50vw',
+                        width: '40vw',
                         borderRadius: '20px',
                         border: '1px solid ',
                         borderColor: 'divider',

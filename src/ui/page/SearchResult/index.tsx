@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import StickyFooter from "../../../util/Footer.tsx";
 
 type params = {
     userInput: string,
@@ -69,6 +70,7 @@ export default function SearchResultPage(){
             ) : (
                 <LoadingContainer />
             )}
+            <StickyFooter/>
             {/*<NavList/>*/}
             {/*<Box sx={{ display: 'flex', ml: '10vw', p: 2 }}> /!* Use Box component for styling and spacing *!/*/}
             {/*    <Typography variant="h4" gutterBottom>*/}
@@ -82,5 +84,6 @@ export default function SearchResultPage(){
             {/*}*/}
             {/*<h3>Pathname: {location.pathname} </h3>*/}
         </>
+
     )
 }

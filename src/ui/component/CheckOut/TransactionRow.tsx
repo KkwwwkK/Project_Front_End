@@ -21,8 +21,8 @@ export default function TransactionRow({listData}: Props){
                             {listData.product.name}
                         </Typography>
                     </Box>
-                    <Box sx={{display: 'flex', flexDirection: 'row', width: '20vw'}}>
-                        <Box sx={{display: 'flex', flexDirection: 'row', marginRight: '16px'}}>
+                    <Box sx={{display: 'flex', flexDirection: 'row', width: '100%'}}>
+                        <Box sx={{display: 'flex', flexDirection: 'row', marginRight: '16px', minWidth: '40%'}}>
                             <Box>
                                 unit price: ${listData.product.price.toLocaleString()}
                             </Box>
@@ -30,7 +30,7 @@ export default function TransactionRow({listData}: Props){
                                 x {listData.quantity}
                             </Box>
                         </Box>
-                        <Box>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end', ml: '124px', minWidth: '60%' }}>
                             subtotal: ${listData.subtotal.toLocaleString()}
                         </Box>
                     </Box>

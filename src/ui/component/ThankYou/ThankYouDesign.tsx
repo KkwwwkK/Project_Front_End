@@ -29,12 +29,13 @@ export default function ThankYouDesign(){
                         variant="contained"
                         onClick={()=>(navigate("/"))}
                         sx={{
-                            backgroundImage: 'linear-gradient(to right, black, silver)', // Color gradient background
-                            color: 'silver', // Silver-colored text
+                            marginTop: '20px',
+                            borderRadius: '24px',
+                            backgroundImage: 'linear-gradient(to bottom, silver, black, silver)', // Gradient background
+                            color: 'white', // Text color
                             '&:hover': {
-                                backgroundImage: 'linear-gradient(to right, silver, black)', // Hover effect
+                                backgroundImage: 'linear-gradient(to top, silver, black, silver)', // Hover effect
                             },
-                            borderRadius: '24%'
                         }}
                     >
                         Go Home

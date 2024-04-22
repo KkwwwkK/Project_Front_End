@@ -6,7 +6,7 @@ import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
 import Typography from "@mui/material/Typography";
 import {useEffect, useState} from "react";
 /* Import Roboto font from Google Fonts */
-
+import StickyFooter from "../../../util/Footer.tsx";
 
 type Props={
     cartItemDto: CartItemDto[];
@@ -57,13 +57,17 @@ export default function ShoppingCartTable({cartItemDto}: Props){
         }}>
             <TableContainer component={Paper} sx={{ width: 'calc(100vw + 400px)' }}> {/* Adjust width here */}
                 <Table aria-label="simple table">
-                    <TableHead sx={{ background: `linear-gradient(to bottom, #c0c0c0, #ffffff, #c0c0c0)`, }}>
+                    <TableHead sx={{ backgroundImage: 'linear-gradient(to bottom, silver, black, silver)', // Gradient background
+                        color: 'white', // Text color
+                        '&:hover': {
+                            backgroundImage: 'linear-gradient(to top, silver, black, silver)', // Hover effect
+                        }, }}>
                         <TableRow>
-                            <TableCell align="center"><Typography >Product</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="subtitle1" sx={{ color: 'white' }}>Product</Typography></TableCell>
                             <TableCell align="center"><Typography></Typography></TableCell>
-                            <TableCell align="center"><Typography>Unit Price</Typography></TableCell>
-                            <TableCell align="center"><Typography>Quantity</Typography></TableCell>
-                            <TableCell align="center"><Typography>Subtotal</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="subtitle1" sx={{ color: 'white' }}>Unit Price</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="subtitle1" sx={{ color: 'white' }}>Quantity</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="subtitle1" sx={{ color: 'white' }}>Subtotal</Typography></TableCell>
                             <TableCell align="center"></TableCell>
                         </TableRow>
                     </TableHead>

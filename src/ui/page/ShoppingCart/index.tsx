@@ -12,7 +12,6 @@ import {UserData} from "../../../data/user/UserData.tsx";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import {isAxiosError} from "axios";
 import LoadingContainer from "../../component/ShoppingCart/LoadingContainer.tsx";
-
 export default function ShoppingCart() {
     const[cartItemDto, setCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
     // const[cartItemQuantity, setCartItemQuantity] = useState<number>(0);

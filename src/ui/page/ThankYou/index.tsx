@@ -3,6 +3,7 @@ import NavList from "../../component/NavList/NavList.tsx";
 // import {Container} from "@mui/material";
 import ThankYouDesign from "../../component/ThankYou/ThankYouDesign.tsx";
 import Box from "@mui/material/Box";
+import StickyFooter from "../../../util/Footer.tsx";
 
 export default function ThankYou() {
     // const location = useLocation();
@@ -11,8 +12,7 @@ export default function ThankYou() {
         <Box className="shopping-cart-container">
             <NavList/>
             <ThankYouDesign/>
-            {/*<h1>Thank You Page!</h1>*/}
-            {/*<h3>Pathname: {location.pathname} </h3>*/}
+            <StickyFooter/>
         </Box>
     )
 }

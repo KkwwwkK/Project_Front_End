@@ -30,17 +30,24 @@ export default function Transaction({transactionByTidDto}: Props) {
         <Container sx={{
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            ml: '64px'
         }}>
             <Paper sx={{
                 display: 'flex',
-                minWidth: '36vw',
+                minWidth: '58%',
+                minHeight: 612,
+                maxHeight: 612,
                 }}>
-                <TableContainer sx={{ maxHeight: 585 }}>
+                <TableContainer sx={{ maxHeight: 612 }}>
                     <Table stickyHeader aria-label="sticky table">
-                        <TableHead>
+                        <TableHead >
                             <TableRow>
-                                <TableCell align="center" colSpan={1}>
+                                <TableCell align="center" colSpan={1} sx={{ backgroundImage: 'linear-gradient(to bottom, silver, black, silver)', // Gradient background
+                                    color: 'white', // Text color
+                                    '&:hover': {
+                                        backgroundImage: 'linear-gradient(to top, silver, black, silver)', // Hover effect
+                                    }, }}>
                                     <Typography variant='h5'>
                                         Order Summary
                                     </Typography>

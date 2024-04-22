@@ -8,8 +8,10 @@ import {ProductListDto} from "../../../data/ProductList/ProductListDto.tsx";
 import Box from "@mui/material/Box";
 import {Alert, AlertTitle, CardActionArea} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
+import {UserData} from "../../../data/user/UserData.tsx";
+import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 
 
 type Props = {
@@ -22,16 +24,22 @@ export default function ProductItem({listData}: Props) {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
     const [isAddingToCart, setIsAddingToCart] = useState(false);
+    const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
     const handleAddToCart = async ()=> {
         try{
-            setIsAddingToCart(true);
-            await CartItemApi.putCartItem(listData.pid, 1);
-            setIsAddingToCart(false);
-            setShowSuccessAlert(true);
-            // Automatically hide success alert after 1 second
-            setTimeout(() => {
-                setShowSuccessAlert(false);
-            }, 1000);
+            if (!loginUser){
+                navigate("/login");
+                return;
+            } else {
+                setIsAddingToCart(true);
+                await CartItemApi.putCartItem(listData.pid, 1);
+                setIsAddingToCart(false);
+                setShowSuccessAlert(true);
+                // Automatically hide success alert after 1 second
+                setTimeout(() => {
+                    setShowSuccessAlert(false);
+                }, 1000);
+            }
         } catch(error){
             setIsAddingToCart(false);
             setShowErrorAlert(true);

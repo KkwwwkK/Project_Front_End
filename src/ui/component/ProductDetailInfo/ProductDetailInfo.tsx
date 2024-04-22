@@ -7,8 +7,11 @@ import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import QuantityInput from "../../../util/QuantityInput.tsx";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useContext, useState} from "react";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
+import {UserData} from "../../../data/user/UserData.tsx";
+import {LoginUserContext} from "../../../context/LoginUserContext.ts";
+import {useNavigate} from "react-router-dom";
 
 type Props = {
     productDetailDto: ProductDetailDto;
@@ -19,7 +22,8 @@ export default function ProductDetailInfo({productDetailDto}: Props){
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
     const [isAddingToCart, setIsAddingToCart] = useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
 
     const handleMinus = ()=> {
         if(quantity > 1){
@@ -51,14 +55,19 @@ export default function ProductDetailInfo({productDetailDto}: Props){
 
     const handleAddToCart = async ()=> {
         try{
-            setIsAddingToCart(true);
-            await CartItemApi.putCartItem(productDetailDto.pid, quantity);
-            setIsAddingToCart(false);
-            setShowSuccessAlert(true);
-            // Automatically hide success alert after 1 second
-            setTimeout(() => {
-                setShowSuccessAlert(false);
-            }, 1000);
+            if (!loginUser){
+                navigate("/login");
+                return;
+            } else {
+                setIsAddingToCart(true);
+                await CartItemApi.putCartItem(productDetailDto.pid, quantity);
+                setIsAddingToCart(false);
+                setShowSuccessAlert(true);
+                // Automatically hide success alert after 1 second
+                setTimeout(() => {
+                    setShowSuccessAlert(false);
+                }, 1000);
+            }
         } catch(error){
             setShowErrorAlert(true);
             setIsAddingToCart(false);

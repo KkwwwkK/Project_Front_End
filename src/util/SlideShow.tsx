@@ -13,11 +13,11 @@ const slideImages: SlideImage[] = [
         caption: 'Slide 1'
     },
     {
-        url: 'https://wallpapers.com/images/high/connected-chains-of-dots-and-lines-8w53afda4c6ie6kc.webp',
+        url: 'https://i.pinimg.com/736x/28/eb/3a/28eb3a508e4bcc597c87979a72409096.jpg',
         caption: 'Slide 2'
     },
     {
-        url: 'https://wallpapers.com/images/high/techno-robot-closeup-08x9hy7r0uo9g26h.webp',
+        url: 'https://i.ytimg.com/vi/02Ip22mnHS0/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShMMA8=&rs=AOn4CLDcGIbBUz_vTUc33tXR4wJmfa0DEw',
         caption: 'Slide 3'
     },
 ];
@@ -82,7 +82,7 @@ const AliceCarouselWithIndicators = () => {
 
                     .carousel-image {
                         width: 100vw; /* Image width covers entire container */
-                        height: 50vh; /* Maintain aspect ratio */
+                        height: 60vh; /* Maintain aspect ratio */
                         object-fit: cover; /* Ensure image covers entire space */
                     }
 

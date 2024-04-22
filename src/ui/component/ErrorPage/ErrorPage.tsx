@@ -1,73 +1,56 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import {useNavigate} from "react-router-dom";
+import { Box, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Error = () => {
-
     const navigate = useNavigate();
-    return (
-        <Box>
-            {/* Container for stars */}
-            <Box
-                className="container container-star"
-                sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100vh',
-                    overflow: 'hidden',
-                    backgroundImage:
-                        'linear-gradient(to bottom, white, silver, white)',
-                }}
-            ></Box>
 
-            {/* Container for title and moon */}
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh',
+                backgroundImage: `url('https://wallpapers.com/images/high/robot-pictures-049zn0b2q7ld5nlw.webp')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                color: 'white',
+                textAlign: 'center',
+                padding: '0 20px', // Add padding for content on the left side
+            }}
+        >
             <Box
-                className="container-title"
                 sx={{
-                    width: 600,
-                    height: 450,
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Semi-transparent overlay
+                    padding: '20px',
+                    borderRadius: '8px',
                     position: 'absolute',
-                    color: 'black',
-                    lineHeight: 1,
-                    fontWeight: 700,
-                    textAlign: 'center',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                    display: 'flex',
+                    left: '300px', // Adjust the left position as needed
+                    textAlign: 'center', // Align text to the left
                 }}
             >
-                {/* Title with moon and facial features */}
-                <Typography variant="h1">
-                    <span className="number">4</span>
-                    <span className="number">0</span>
-                    <span className="number">4</span>
+                {/* Title */}
+                <Typography variant="h1" gutterBottom>
+                    404
                 </Typography>
 
                 {/* Subtitle */}
-                <Typography variant="subtitle1" className="subtitle">
+                <Typography variant="subtitle1" gutterBottom>
                     Oops. Looks like you took a wrong turn.
                 </Typography>
 
                 {/* Button */}
                 <Button
                     variant="contained"
-                    onClick={()=>(navigate("/"))}
+                    onClick={() => navigate('/')}
                     sx={{
-                        mt: '40px',
-
-                        backgroundImage: 'linear-gradient(to bottom, white, silver, white)', // Color gradient background
-                        color: 'black', // Silver-colored text
+                        marginTop: '20px',
+                        borderRadius: '24px',
+                        backgroundImage: 'linear-gradient(to bottom, silver, white, silver)', // Gradient background
+                        color: 'black', // Text color
                         '&:hover': {
-                            backgroundImage: 'linear-gradient(to top, black, silver, white))', // Hover effect
+                            backgroundImage: 'linear-gradient(to top, silver, white, silver)', // Hover effect
                         },
-                        borderRadius: '24%'
                     }}
                 >
                     Go Home
@@ -78,18 +61,3 @@ const Error = () => {
 };
 
 export default Error;
-
-// import Box from "@mui/material/Box";
-// import NavList from "../NavList/NavList.tsx";
-//
-// export default function ErrorPage(){
-//     return(
-//         <Box>
-//             <Box display='flex' justifyContent='center' alignItems='center' height='90vh'>
-//                 <img
-//                     src='https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-page-templates.jpg'
-//                 />
-//             </Box>
-//         </Box>
-//     )
-// }

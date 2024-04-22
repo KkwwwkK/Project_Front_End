@@ -9,7 +9,6 @@ import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 import * as TransactionApi from "../../../api/TransactionApi.ts";
 import LinearLoadingContainer from "../../component/CheckOut/LinearLoadingContainer.tsx";
-import mockData from "./response.json";
 
 type params = {
     transactionId: string
