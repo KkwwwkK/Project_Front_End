@@ -35,27 +35,6 @@ export default function OrderSummary({totalPrice}: Props) {
         }
     };
 
-    // const fetchTransactionDto = async() => {
-    //     try {
-    //         setTransactionDto(undefined);
-    //         const responseTransactionDto = await TransactionApi.putTransaction();
-    //         setTransactionDto(responseTransactionDto);
-    //     } catch(error){
-    //         console.log(error);
-    //         navigate("/error")
-    //     }
-    // }
-    //
-    // const handleCheckout = async() => {
-    //     setIsPuttingTransaction(true);
-    //     await fetchTransactionDto().then();
-    //     setIsPuttingTransaction(false);
-    //     if (transactionDto && isPuttingTransaction === false){
-    //         navigate(`/checkout/${transactionDto.tid}`)
-    //     }
-    // }
-
-
 
     // Attach scroll event listener when component mounts
     useEffect(() => {
@@ -99,16 +78,6 @@ export default function OrderSummary({totalPrice}: Props) {
                         Checkout
                     </Button>
                 )}
-                {/*<Button onClick={handleCheckout} variant="contained"*/}
-                {/*        sx={{*/}
-                {/*            backgroundColor: '#212121', // Background color*/}
-                {/*            color: '#fff', // Font color*/}
-                {/*            '&:hover': {*/}
-                {/*                backgroundColor: '#333', // Hover background color (optional)*/}
-                {/*            },*/}
-                {/*        }}>*/}
-                {/*    Checkout*/}
-                {/*</Button>*/}
             </Box>
         </Container>
     )

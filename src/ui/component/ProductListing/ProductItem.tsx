@@ -12,6 +12,7 @@ import {useContext, useState} from "react";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
 import {UserData} from "../../../data/user/UserData.tsx";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
+import {CartContext, CartContextType} from "../../../context/CartContext.ts";
 
 
 type Props = {
@@ -25,6 +26,11 @@ export default function ProductItem({listData}: Props) {
     const [showErrorAlert, setShowErrorAlert] = useState(false);
     const [isAddingToCart, setIsAddingToCart] = useState(false);
     const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
+
+    // Ensure cartContext is defined before accessing properties
+    const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
+    const setCartItemNumber = cartContext?.setCartItemNumber;
+
     const handleAddToCart = async ()=> {
         try{
             if (!loginUser){
@@ -39,6 +45,10 @@ export default function ProductItem({listData}: Props) {
                 setTimeout(() => {
                     setShowSuccessAlert(false);
                 }, 1000);
+
+                if(setCartItemNumber){
+                    setCartItemNumber((prevCount) => prevCount + 1);
+                }
             }
         } catch(error){
             setIsAddingToCart(false);

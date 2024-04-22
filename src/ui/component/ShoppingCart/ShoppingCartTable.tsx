@@ -6,7 +6,6 @@ import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
 import Typography from "@mui/material/Typography";
 import {useEffect, useState} from "react";
 /* Import Roboto font from Google Fonts */
-import StickyFooter from "../../../util/Footer.tsx";
 
 type Props={
     cartItemDto: CartItemDto[];
@@ -105,16 +104,6 @@ export default function ShoppingCartTable({cartItemDto}: Props){
                                 />
                             ))
                         )}
-                        {/*{*/}
-                        {/*    newCartItem.map((data)=>(*/}
-                        {/*        <ShoppingCartTableRow*/}
-                        {/*            key={data.pid}*/}
-                        {/*            listData={data}*/}
-                        {/*            updateCartItem={handleUpdateCartItem}*/}
-                        {/*            handleRemoveCartItem={handleRemoveCartItem}*/}
-                        {/*        />*/}
-                        {/*    ))*/}
-                        {/*}*/}
                     </TableBody>
                 </Table>
             </TableContainer>

@@ -2,11 +2,12 @@ import { TableRow, TableCell } from '@mui/material';
 // import QuantityInput from "../../../util/QuantityInput.tsx";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import QuantityInput from "../../../util/QuantityInput.tsx";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
 import CircularProgress from "@mui/material/CircularProgress";
 import {useNavigate} from "react-router-dom";
+import {CartContext, CartContextType} from "../../../context/CartContext.ts";
 
 type Props = {
     listData: CartItemDto;
@@ -19,6 +20,10 @@ export default function ShoppingCartTableRow({listData, updateCartItem, handleRe
     const[isItemDeleting, setIsItemDeleting] = useState<boolean>(false);
 
     const navigate = useNavigate();
+
+    // Ensure cartContext is defined before accessing properties
+    const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
+    const setCartItemNumber = cartContext?.setCartItemNumber;
 
     const handleMinus = async ()=> {
         if(quantity > 1){
@@ -61,6 +66,9 @@ export default function ShoppingCartTableRow({listData, updateCartItem, handleRe
             setIsItemDeleting(true);
             await CartItemApi.removeItemByPid(listData.pid);
             setIsItemDeleting(false);
+            if(setCartItemNumber){
+                setCartItemNumber((prevCount) => Math.max(prevCount - 1, 0));
+            }
             handleRemoveCartItem(listData.pid);
         } catch(error){
             setIsItemDeleting(false);

@@ -20,22 +20,9 @@ import Spinner from "../../../util/Spinner.tsx";
 import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.tsx";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { CartContext, CartContextType } from "../../../context/CartContext.ts";
 //
-// const Search = styled('div')(({ theme }) => ({
-//     position: 'relative',
-//     borderRadius: theme.shape.borderRadius,
-//     backgroundColor: alpha(theme.palette.common.white, 0.15),
-//     '&:hover': {
-//         backgroundColor: alpha(theme.palette.common.white, 0.25),
-//     },
-//     marginRight: theme.spacing(2),
-//     marginLeft: 0,
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//         marginLeft: theme.spacing(3),
-//         width: 'auto',
-//     },
-// }));
+
 const SearchContainer = styled('form')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -84,6 +71,9 @@ export default function NavList() {
     const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState('');
+    // Ensure cartContext is defined before accessing properties
+    const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
+    const cartItemNumber = cartContext?.cartItemNumber;
 
     const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setSearchQuery(event.target.value);
@@ -143,6 +133,7 @@ export default function NavList() {
     }
 
 
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: 'black', marginBottom: '0'}}>
@@ -188,7 +179,7 @@ export default function NavList() {
                             onClick={handleShoppingCartClick}
                             size="large" aria-label="show 4 new mails" color="inherit"
                             >
-                            <Badge badgeContent={0} color="error">
+                            <Badge badgeContent={cartItemNumber} color="error">
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>

@@ -6,14 +6,29 @@ import {useEffect, useState} from "react";
 import {UserData} from "./data/user/UserData.tsx";
 import * as FirebaseAuthService from "./authService/FirebaseAuthService.tsx";
 import {LoginUserContext} from "./context/LoginUserContext.ts";
-
+import {CartContext} from "./context/CartContext.ts";
+import {CartItemDto} from "./data/CartItem/CartItemDto.ts";
+import * as CartItemApi from "./api/CartItemApi.ts";
 function App() {
     const[loginUser, setLoginUser] = useState<UserData | null | undefined >(undefined);
+    const[cartItemNumber, setCartItemNumber] = useState(0);
 
+    const fetchUserCart = async ()=> {
+        try {
+            const responseCartItemDto:CartItemDto[] = await CartItemApi.getUserCart();
+            setCartItemNumber(responseCartItemDto.length);
+        } catch(error){
+            console.log(error);
+        }
+    }
 
-    // const[cartItemDto, setCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
-    // const[cartItemQuantity, setCartItemQuantity] = useState<number>(0);
-
+    // const location = useLocation();
+    useEffect(() => {
+        if(loginUser){
+            fetchUserCart().then();
+        }
+        // putCartItem();
+    }, [loginUser, cartItemNumber]);
 
     useEffect(() => {
         FirebaseAuthService.handleOnAuthStateChanged(setLoginUser);
@@ -22,7 +37,9 @@ function App() {
   return (
     <>
             <LoginUserContext.Provider value={loginUser}>
-                <RouterProvider router={router}/>
+                <CartContext.Provider value={{cartItemNumber, setCartItemNumber}}>
+                    <RouterProvider router={router}/>
+                </CartContext.Provider>
             </LoginUserContext.Provider>
     </>
   )

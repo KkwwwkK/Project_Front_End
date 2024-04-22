@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import LoadingContainer from "./LoadingContainer";
 import * as TransactionApi from "../../../api/TransactionApi.ts";
 import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
+import {useContext} from "react";
+import {CartContext, CartContextType} from "../../../context/CartContext.ts";
 
 const FormGrid = styled('div')(() => ({
     display: 'flex',
@@ -31,8 +33,12 @@ export default function PaymentForm({transactionByTidDto }: Props) {
     const [cardNumberError, setCardNumberError] = React.useState<boolean>(false);
     const [cvvError, setCvvError] = React.useState<boolean>(false);
     const [expirationDateError, setExpirationDateError] = React.useState<boolean>(false);
-
     const navigate = useNavigate();
+
+    // Ensure cartContext is defined before accessing properties
+    const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
+    const setCartItemNumber = cartContext?.setCartItemNumber;
+
 
     const handleCardNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let value = event.target.value.replace(/\D/g, ''); // Remove non-numeric characters
@@ -76,6 +82,9 @@ export default function PaymentForm({transactionByTidDto }: Props) {
             await TransactionApi.finishTransactionByTid(transactionByTidDto.tid);
             setIsLoading(false);
             navigate("/thankyou");
+            if (setCartItemNumber){
+                setCartItemNumber(0);
+            }
         } catch (error) {
             console.error('Error confirming payment:', error);
             setIsLoading(false);
@@ -176,198 +185,3 @@ export default function PaymentForm({transactionByTidDto }: Props) {
     );
 }
 
-
-
-
-// import * as React from 'react';
-//
-// import Box from '@mui/material/Box';
-// import FormLabel from '@mui/material/FormLabel';
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import Stack from '@mui/material/Stack';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button'; // Added Button import
-//
-// import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
-// import SimCardRoundedIcon from '@mui/icons-material/SimCardRounded';
-//
-// import { styled } from '@mui/system';
-// import { Container } from "@mui/material";
-// import {useNavigate} from "react-router-dom";
-// import {useState} from "react";
-// import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
-// import * as TransactionApi from "../../../api/TransactionApi.ts";
-// import LoadingContainer from "./LoadingContainer.tsx";
-//
-// const FormGrid = styled('div')(() => ({
-//     display: 'flex',
-//     flexDirection: 'column',
-// }));
-//
-// type Props = {
-//     transactionByTidDto: TransactionDto;
-// }
-//
-// export default function PaymentForm({transactionByTidDto}: Props) {
-//     const [cardNumber, setCardNumber] = React.useState('');
-//     const [cvv, setCvv] = React.useState('');
-//     const [expirationDate, setExpirationDate] = React.useState('');
-//     const [isLoading, setIsLoading] = useState<boolean>(false); // Loading state
-//
-//
-//     const handleCardNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         const value = event.target.value.replace(/\D/g, '');
-//         const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-//         if (value.length <= 16) {
-//             setCardNumber(formattedValue);
-//         }
-//     };
-//
-//     const handleCvvChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         const value = event.target.value.replace(/\D/g, '');
-//         if (value.length <= 3) {
-//             setCvv(value);
-//         }
-//     };
-//
-//     const handleExpirationDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         const value = event.target.value.replace(/\D/g, '');
-//         const formattedValue = value.replace(/(\d{2})(?=\d{2})/, '$1/');
-//         if (value.length <= 4) {
-//             setExpirationDate(formattedValue);
-//         }
-//     };
-//
-//     const handleConfirmPayment = async () => {
-//         try {
-//             setIsLoading(true); // Set loading state to true
-//             await TransactionApi.processTransactionByTid(transactionByTidDto.tid); // Process transaction payment
-//             await TransactionApi.finishTransactionByTid(transactionByTidDto.tid); // Finish transaction
-//             setIsLoading(false); // Set loading state to false
-//             navigate("/thankyou"); // Navigate to thank you page
-//         } catch (error) {
-//             console.error('Error confirming payment:', error);
-//             setIsLoading(false); // Set loading state to false on error
-//             navigate('/error'); // Navigate to error page
-//         }
-//     };
-//
-//     const navigate = useNavigate();
-//
-//     return (
-//         <Container sx={{display:'flex', width: '43vw'}}>
-//             <Stack spacing={{ xs: 3, sm: 6 }} useFlexGap>
-//                 <Box
-//                     sx={{
-//                         display: 'flex',
-//                         flexDirection: 'column',
-//                         gap: 2,
-//                         objectFit: 'contain'
-//                     }}
-//                 >
-//                     <Box
-//                         sx={{
-//                             display: 'flex',
-//                             flexDirection: 'column',
-//                             justifyContent: 'space-between',
-//                             p: 3,
-//                             height: { xs: 300, sm: 350, md: 375 },
-//                             width: '50vw',
-//                             borderRadius: '20px',
-//                             border: '1px solid ',
-//                             borderColor: 'divider',
-//                             backgroundColor: 'background.paper',
-//                             boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.05)',
-//                         }}
-//                     >
-//                         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-//                             <Typography variant="subtitle2">Credit card</Typography>
-//                             <CreditCardRoundedIcon sx={{ color: 'text.secondary' }} />
-//                         </Box>
-//                         <SimCardRoundedIcon
-//                             sx={{
-//                                 fontSize: { xs: 48, sm: 56 },
-//                                 transform: 'rotate(90deg)',
-//                                 color: 'text.secondary',
-//                             }}
-//                         />
-//                         <Box
-//                             sx={{
-//                                 display: 'flex',
-//                                 justifyContent: 'space-between',
-//                                 width: '100%',
-//                                 gap: 2,
-//                             }}
-//                         >
-//                             <FormGrid sx={{ flexGrow: 1 }}>
-//                                 <FormLabel htmlFor="card-number" required>
-//                                     Card number
-//                                 </FormLabel>
-//                                 <OutlinedInput
-//                                     id="card-number"
-//                                     autoComplete="card-number"
-//                                     placeholder="0000 0000 0000 0000"
-//                                     required
-//                                     value={cardNumber}
-//                                     onChange={handleCardNumberChange}
-//                                 />
-//                             </FormGrid>
-//                             <FormGrid sx={{ maxWidth: '20%' }}>
-//                                 <FormLabel htmlFor="cvv" required>
-//                                     CVV
-//                                 </FormLabel>
-//                                 <OutlinedInput
-//                                     id="cvv"
-//                                     autoComplete="CVV"
-//                                     placeholder="123"
-//                                     required
-//                                     value={cvv}
-//                                     onChange={handleCvvChange}
-//                                 />
-//                             </FormGrid>
-//                         </Box>
-//                         <Box sx={{ display: 'flex', gap: 2 }}>
-//                             <FormGrid sx={{ flexGrow: 1 }}>
-//                                 <FormLabel htmlFor="card-name" required>
-//                                     Name
-//                                 </FormLabel>
-//                                 <OutlinedInput
-//                                     id="card-name"
-//                                     autoComplete="card-name"
-//                                     placeholder="John Smith"
-//                                     required
-//                                 />
-//                             </FormGrid>
-//                             <FormGrid sx={{ flexGrow: 1 }}>
-//                                 <FormLabel htmlFor="card-expiration" required>
-//                                     Expiration date
-//                                 </FormLabel>
-//                                 <OutlinedInput
-//                                     id="card-expiration"
-//                                     autoComplete="card-expiration"
-//                                     placeholder="MM/YY"
-//                                     required
-//                                     value={expirationDate}
-//                                     onChange={handleExpirationDateChange}
-//                                 />
-//                             </FormGrid>
-//                         </Box>
-//                         {
-//                             isLoading
-//                             ? <LoadingContainer/>
-//                                 : <Button variant="contained" color="primary"
-//                                           onClick={handleConfirmPayment}
-//                                           sx={{
-//                                               backgroundColor: '#212121', // Background color
-//                                               color: '#fff', // Font color
-//                                               '&:hover': {
-//                                                   backgroundColor: '#333', // Hover background color (optional)
-//                                               },
-//                                           }}>Confirm Payment</Button>
-//                         }
-//                     </Box>
-//                 </Box>
-//             </Stack>
-//         </Container>
-//     );
-// }

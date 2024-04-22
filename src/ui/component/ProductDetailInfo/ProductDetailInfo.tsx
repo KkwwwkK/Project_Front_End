@@ -12,6 +12,7 @@ import * as CartItemApi from "../../../api/CartItemApi.ts";
 import {UserData} from "../../../data/user/UserData.tsx";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import {useNavigate} from "react-router-dom";
+import {CartContext, CartContextType} from "../../../context/CartContext.ts";
 
 type Props = {
     productDetailDto: ProductDetailDto;
@@ -24,6 +25,9 @@ export default function ProductDetailInfo({productDetailDto}: Props){
     const [isAddingToCart, setIsAddingToCart] = useState(false);
     const navigate = useNavigate();
     const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
+    // Ensure cartContext is defined before accessing properties
+    const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
+    const setCartItemNumber = cartContext?.setCartItemNumber;
 
     const handleMinus = ()=> {
         if(quantity > 1){
@@ -67,6 +71,9 @@ export default function ProductDetailInfo({productDetailDto}: Props){
                 setTimeout(() => {
                     setShowSuccessAlert(false);
                 }, 1000);
+                if(setCartItemNumber){
+                    setCartItemNumber((prevCount) => prevCount + 1);
+                }
             }
         } catch(error){
             setShowErrorAlert(true);

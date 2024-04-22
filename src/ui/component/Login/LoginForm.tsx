@@ -124,13 +124,6 @@ export default function LoginForm() {
                         style={{width: '100%', margin: "0"}}
                         onClick={handleGoogleSignIn}
                     />
-                    {/*<Grid container>*/}
-                    {/*    <Grid item>*/}
-                    {/*        <Link href="#" variant="body2">*/}
-                    {/*            {"Don't have an account? Sign Up"}*/}
-                    {/*        </Link>*/}
-                    {/*    </Grid>*/}
-                    {/*</Grid>*/}
                 </Box>
             </Box>
         </Container>

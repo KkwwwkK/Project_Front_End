@@ -22,10 +22,6 @@ type Props = {
 
 export default function Transaction({transactionByTidDto}: Props) {
 
-    // const [page, setPage] = React.useState(0);
-    // const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-
     return (
         <Container sx={{
             display: 'flex',
@@ -55,16 +51,6 @@ export default function Transaction({transactionByTidDto}: Props) {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {/*{*/}
-                            {/*    transactionByTidDto.Items.map((data)=>(*/}
-                            {/*        <TableRow hover role="checkbox">*/}
-                            {/*            <TableCell align="left">*/}
-                            {/*                <TransactionRow key={transactionByTidDto.tid}*/}
-                            {/*                                listData={data}/>*/}
-                            {/*            </TableCell>*/}
-                            {/*        </TableRow>*/}
-                            {/*    ))*/}
-                            {/*}*/}
                             {transactionByTidDto.Items.length > 0 ? (
                                 transactionByTidDto.Items.map((data) => (
                                     <TableRow hover role="checkbox" key={data.tpid}>

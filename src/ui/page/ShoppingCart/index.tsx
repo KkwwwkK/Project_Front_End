@@ -37,9 +37,6 @@ export default function ShoppingCart() {
         }
     }
 
-    // const putCartItem = async ()=>{
-    //     await CartItemApi.putCartItem(1, 1);
-    // }
 
     // const location = useLocation();
     useEffect(() => {
