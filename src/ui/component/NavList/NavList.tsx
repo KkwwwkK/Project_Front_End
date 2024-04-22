@@ -74,6 +74,7 @@ export default function NavList() {
     // Ensure cartContext is defined before accessing properties
     const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
     const cartItemNumber = cartContext?.cartItemNumber;
+    const setCartItemNumber = cartContext?.setCartItemNumber;
 
     const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setSearchQuery(event.target.value);
@@ -179,7 +180,7 @@ export default function NavList() {
                             onClick={handleShoppingCartClick}
                             size="large" aria-label="show 4 new mails" color="inherit"
                             >
-                            <Badge badgeContent={cartItemNumber} color="error">
+                            <Badge badgeContent={!loginUser?setCartItemNumber(0):cartItemNumber} color="error">
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>

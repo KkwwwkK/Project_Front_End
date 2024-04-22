@@ -16,7 +16,11 @@ function App() {
     const fetchUserCart = async ()=> {
         try {
             const responseCartItemDto:CartItemDto[] = await CartItemApi.getUserCart();
-            setCartItemNumber(responseCartItemDto.length);
+            if (loginUser){
+                setCartItemNumber(responseCartItemDto.length);
+            } else {
+                setCartItemNumber(0);
+            }
         } catch(error){
             console.log(error);
         }
