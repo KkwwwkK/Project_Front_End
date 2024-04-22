@@ -157,9 +157,12 @@ export default function NavList() {
                         <Link
                         to = "/"
                         style ={{color: "white"}}>
-                            <FontAwesomeIcon icon={faMicrochip} />
+                            <FontAwesomeIcon icon={faMicrochip}/>
                         </Link>
                     </IconButton>
+                    <Link
+                        to = "/"
+                        style ={{color: "white", textDecoration: 'none' }}>
                     <Typography
                         variant="h6"
                         noWrap
@@ -168,6 +171,7 @@ export default function NavList() {
                     >
                         Smart Home
                     </Typography>
+                    </Link>
                     <SearchContainer  onSubmit={handleSearchSubmit}>
                         <SearchIconWrapper>
                             <SearchIcon />
@@ -184,7 +188,7 @@ export default function NavList() {
                             onClick={handleShoppingCartClick}
                             size="large" aria-label="show 4 new mails" color="inherit"
                             >
-                            <Badge badgeContent={1} color="error">
+                            <Badge badgeContent={0} color="error">
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>

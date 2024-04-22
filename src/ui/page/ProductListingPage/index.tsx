@@ -8,7 +8,7 @@ import {useEffect, useState} from "react";
 // import QuantityInput from "../../../util/QuantityInput.tsx";
 import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 import SlideShow from "../../../util/SlideShow.tsx";
-
+import StickyFooter from "../../../util/Footer.tsx";
 export default function ProductListingPage(){
     // const location = useLocation();
     const [productListDto, setProductListDto]
@@ -45,7 +45,7 @@ export default function ProductListingPage(){
                 ? <ProductItemList productListDto={productListDto}/>
                     :<LoadingContainer/>
             }
-            {/*<h3>Pathname: {location.pathname} </h3>*/}
+            <StickyFooter/>
         </>
     )
 }

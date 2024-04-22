@@ -11,6 +11,7 @@ import {useNavigate} from "react-router-dom";
 import {UserData} from "../../../data/user/UserData.tsx";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import {isAxiosError} from "axios";
+import LoadingContainer from "../../component/ShoppingCart/LoadingContainer.tsx";
 
 export default function ShoppingCart() {
     const[cartItemDto, setCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
@@ -61,8 +62,9 @@ export default function ShoppingCart() {
         <Box className="shopping-cart-container">
             <NavList/>
             {
-                cartItemDto &&
-                <ShoppingCartTable cartItemDto={cartItemDto}/>
+                cartItemDto
+                    ? <ShoppingCartTable cartItemDto={cartItemDto}/>
+                    : <LoadingContainer/>
             }
         </Box>
     )
