@@ -46,12 +46,14 @@ export default function ShoppingCart() {
         // putCartItem();
     }, [loginUser]);
 
-    // // const location = useLocation();
-    // useEffect(() => {
-    //     setCartItemDto(mockData);
-    //     putCartItem();
-    // }, []);
 
+    // Handle logout navigation
+    useEffect(() => {
+        if (loginUser === null) {
+            // User has logged out, navigate to home page
+            navigate('/');
+        }
+    }, [loginUser]);
 
 
     return(
