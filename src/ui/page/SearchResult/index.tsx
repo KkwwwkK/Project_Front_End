@@ -53,23 +53,27 @@ export default function SearchResultPage(){
 
     return(
         <>
-            <NavList />
-            <Box sx={{ display: 'flex', mt: '80px', ml: '10vw', p: 2 }}>
-                <Typography variant="h4" gutterBottom>
-                    Your Searching Result...
-                </Typography>
-            </Box>
-            {searchProductsDto ? (
-                searchProductsDto.length === 0 ? (
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
-                        <Typography variant="h5">No such Product, Try again!</Typography>
-                    </Box>
+            <Box sx={{mb: "150px"}}>
+                <NavList />
+                <Box sx={{ display: 'flex', mt: '80px', ml: '10vw', p: 2 }}>
+                    <Typography variant="h4" gutterBottom>
+                        Your Searching Result...
+                    </Typography>
+                </Box>
+                {searchProductsDto ? (
+                    searchProductsDto.length === 0 ? (
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+                            <Typography variant="h5">No such Product, Try again!</Typography>
+                        </Box>
+                    ) : (
+                        <ProductItemList productListDto={searchProductsDto} />
+                    )
                 ) : (
-                    <ProductItemList productListDto={searchProductsDto} />
-                )
-            ) : (
-                <LoadingContainer />
-            )}
+                    <LoadingContainer />
+                )}
+
+            </Box>
+
             <StickyFooter/>
 
         </>

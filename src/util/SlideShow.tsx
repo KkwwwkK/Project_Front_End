@@ -29,11 +29,11 @@ const slideImages: SlideImage[] = [
         caption: 'Slide 1'
     },
     {
-        url: 'https://m.media-amazon.com/images/I/713+ykRgTIL._AC_SL1500_.jpg',
+        url: 'https://m.media-amazon.com/images/I/61VxkyychvL._AC_SL1500_.jpg',
         caption: 'Slide 1'
     },
     {
-        url: 'https://m.media-amazon.com/images/I/61hZMlAcbuL._AC_SL1500_.jpg',
+        url: 'https://m.media-amazon.com/images/I/61roEOcI8aL._AC_SL1500_.jpg',
         caption: 'Slide 1'
     },
     {
@@ -69,7 +69,7 @@ const AliceCarouselWithIndicators = () => {
     }, [currentIndex]); // Re-run effect when currentIndex changes
 
     return (
-        <div className="alice-carousel-container" style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '-100px' }}>
+        <div className="alice-carousel-container" style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '-130px' }}>
             <AliceCarousel
                 mouseTracking
                 items={slideImages.map((slide, index) => (

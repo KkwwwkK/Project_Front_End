@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 // import Stack from "@mui/material/Stack";
 import TransactionRow from "./TransactionRow.tsx";
 import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
+import StickyFooter from "../../../util/Footer.tsx";
 
 
 
@@ -27,7 +28,7 @@ export default function Transaction({transactionByTidDto}: Props) {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
-            ml: '64px'
+            ml: '64px',
         }}>
             <Paper sx={{
                 display: 'flex',

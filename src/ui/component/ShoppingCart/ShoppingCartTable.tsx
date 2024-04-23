@@ -52,7 +52,8 @@ export default function ShoppingCartTable({cartItemDto}: Props){
             display: 'flex',
             flexDirection: 'row',
             marginTop: '100px',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginBottom:"400px"
         }}>
             <TableContainer component={Paper} sx={{ width: 'calc(100vw + 400px)' }}> {/* Adjust width here */}
                 <Table aria-label="simple table">
