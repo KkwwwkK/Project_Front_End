@@ -28,7 +28,6 @@ export default function ProductDetailInfo({productDetailDto}: Props){
     // Ensure cartContext is defined before accessing properties
     const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
     const setCartItemNumber = cartContext?.setCartItemNumber;
-
     const handleMinus = ()=> {
         if(quantity > 1){
             setQuantity((prevState:number) => (
@@ -91,7 +90,7 @@ export default function ProductDetailInfo({productDetailDto}: Props){
     const renderAddToCart =()=> {
         if (productDetailDto.stock > 0){
             return(
-                <Box>
+                <Box >
                     <Box sx={{display:"flex", flexDirection: "column", ml: "16px"}}>
                         <QuantityInput
                             quantity={quantity}
@@ -132,11 +131,12 @@ export default function ProductDetailInfo({productDetailDto}: Props){
 
 
     return(
-        <Container sx={{display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "90vh"}}>
+        <Container sx={{ display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "80px",
+                        }}>
             <Box
                 height={600}
                 width={500}

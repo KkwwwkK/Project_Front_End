@@ -51,7 +51,7 @@ export default function ShoppingCartTable({cartItemDto}: Props){
         <Container sx={{
             display: 'flex',
             flexDirection: 'row',
-            marginTop: '40px',
+            marginTop: '100px',
             justifyContent: 'center'
         }}>
             <TableContainer component={Paper} sx={{ width: 'calc(100vw + 400px)' }}> {/* Adjust width here */}

@@ -12,6 +12,7 @@ import {UserData} from "../../../data/user/UserData.tsx";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import {isAxiosError} from "axios";
 import LoadingContainer from "../../component/ShoppingCart/LoadingContainer.tsx";
+import StickyFooter from "../../../util/Footer.tsx";
 export default function ShoppingCart() {
     const[cartItemDto, setCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
     // const[cartItemQuantity, setCartItemQuantity] = useState<number>(0);
@@ -55,6 +56,10 @@ export default function ShoppingCart() {
         }
     }, [loginUser]);
 
+    useEffect(() => {
+        document.title = "Smart Cart"
+    }, []);
+
 
     return(
         <Box className="shopping-cart-container">
@@ -64,6 +69,8 @@ export default function ShoppingCart() {
                     ? <ShoppingCartTable cartItemDto={cartItemDto}/>
                     : <LoadingContainer/>
             }
+            <StickyFooter/>
         </Box>
+
     )
 }

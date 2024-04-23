@@ -36,10 +36,17 @@ export default function ProductDetail() {
     useEffect(() => {
         if(productId){
             fetchProductDetail(productId);
+
         } else {
             navigate("/error")
         }
     }, []);
+
+    useEffect(() => {
+        if(productDetailDto){
+            document.title = productDetailDto.name;
+        }
+    }, [productDetailDto]);
 
 
     // useEffect(() => {

@@ -28,13 +28,13 @@ export default function ProductListingPage(){
     }
 
     useEffect(() => {
-        fetchAllProducts().then()
+        fetchAllProducts().then();
     }, []);
 
+    useEffect(() => {
+        document.title = "Ken's Smart Home"
+    }, []);
 
-    // useEffect(() => {
-    //     setProductListDto(mockData)
-    // }, []);
 
     return(
         <>

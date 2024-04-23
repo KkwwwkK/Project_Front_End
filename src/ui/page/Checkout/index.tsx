@@ -43,9 +43,11 @@ export default function Checkout() {
 
     }, [loginUser]);
 
-    // useEffect(() => {
-    //     setTransactionByTidDto(mockData)
-    // }, []);
+    useEffect(() => {
+        document.title = "Shop smart"
+    }, []);
+
+
 
     return(
         <Container sx={{display: 'flex', width: '100vw', flexDirection: 'row', padding: '0 0', margin: '36px'}}>

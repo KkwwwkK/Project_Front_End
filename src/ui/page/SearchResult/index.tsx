@@ -47,14 +47,14 @@ export default function SearchResultPage(){
     }, [userInput]);
 
 
-    // useEffect(() => {
-    //     setProductListDto(mockData)
-    // }, []);
+    useEffect(() => {
+        document.title = "Smart Check"
+    }, []);
 
     return(
         <>
             <NavList />
-            <Box sx={{ display: 'flex', ml: '10vw', p: 2 }}>
+            <Box sx={{ display: 'flex', mt: '80px', ml: '10vw', p: 2 }}>
                 <Typography variant="h4" gutterBottom>
                     Your Searching Result...
                 </Typography>
@@ -71,19 +71,7 @@ export default function SearchResultPage(){
                 <LoadingContainer />
             )}
             <StickyFooter/>
-            {/*<NavList/>*/}
-            {/*<Box sx={{ display: 'flex', ml: '10vw', p: 2 }}> /!* Use Box component for styling and spacing *!/*/}
-            {/*    <Typography variant="h4" gutterBottom>*/}
-            {/*        Your Searching Result...*/}
-            {/*    </Typography>*/}
-            {/*</Box>*/}
-            {/*{*/}
-            {/*    searchProductsDto*/}
-            {/*        ? <ProductItemList productListDto={searchProductsDto}/>*/}
-            {/*        :<LoadingContainer/>*/}
-            {/*}*/}
-            {/*<h3>Pathname: {location.pathname} </h3>*/}
-        </>
 
+        </>
     )
 }

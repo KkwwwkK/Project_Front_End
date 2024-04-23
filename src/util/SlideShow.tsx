@@ -82,7 +82,7 @@ const AliceCarouselWithIndicators = () => {
 
                     .carousel-image {
                         width: 100vw; /* Image width covers entire container */
-                        height: 60vh; /* Maintain aspect ratio */
+                        height: 75vh; /* Maintain aspect ratio */
                         object-fit: cover; /* Ensure image covers entire space */
                     }
 

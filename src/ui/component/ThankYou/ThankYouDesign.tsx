@@ -22,7 +22,7 @@ export default function ThankYouDesign(){
                 padding: '0 20vw', // Adjust padding horizontally
             }}>
                 <Box>
-                    <Typography variant="h4">Thanks for your order!</Typography>
+                    <Typography variant="h4">You are so smart now:)</Typography>
                     <Typography>in case you need anything else~</Typography>
                     <br/>
                     <Button
