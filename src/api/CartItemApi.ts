@@ -52,6 +52,7 @@ export async function getUserCart(): Promise<CartItemDto[]> {
         return response.data;
 
     } catch(error){
+
         console.log(error);
         throw error;
     }

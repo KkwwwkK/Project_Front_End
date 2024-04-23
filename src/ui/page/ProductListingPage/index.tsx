@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 import SlideShow from "../../../util/SlideShow.tsx";
 import StickyFooter from "../../../util/Footer.tsx";
+import Box from "@mui/material/Box";
 export default function ProductListingPage(){
     // const location = useLocation();
     const [productListDto, setProductListDto]
@@ -39,6 +40,14 @@ export default function ProductListingPage(){
     return(
         <>
             <NavList/>
+            <Box sx={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'right', alignItems: 'center', marginTop:'400px', marginBottom: '30px' }}>
+                    <img
+                        src="https://wallpapers.com/images/high/robot-background-s0kq5o0tyixpq6c1.webp"
+                        alt="Sample Image"
+                        style={{display: 'flex', position: 'absolute'}}
+                    />
+            </Box>
+
             <SlideShow/>
             {
                 productListDto
