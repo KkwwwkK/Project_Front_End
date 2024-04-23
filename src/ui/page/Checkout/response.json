@@ -1,0 +1,126 @@
+{
+  "tid": 35,
+  "buyer_id": 1,
+  "datetime": "2024-04-20T16:58:29.589592",
+  "status": "PREPARE",
+  "total": 6174.96,
+  "Items": [
+    {
+      "tpid": 62,
+      "product": {
+        "pid": 7,
+        "name": "Google Nest Thermostat",
+        "description": "Smart Thermostat for Home - Programmable Wifi Thermostat - Snow\nBrand\tGoogle\nModel Name\tGoogle Nest Thermostat\nProduct Dimensions\t1.07\"D x 3.31\"W x 3.31\"H\nController Type\tGoogle Assistant, Amazon Alexa, nest, iOS, Android\nSpecial Feature\tProgrammable",
+        "image_url": "https://m.media-amazon.com/images/I/51JSqlt6xLL._AC_SL1500_.jpg",
+        "price": 822.84,
+        "stock": 399
+      },
+      "quantity": 3,
+      "subtotal": 2468.52
+    },
+    {
+      "tpid": 63,
+      "product": {
+        "pid": 3,
+        "name": "ASAKUKI Smart Wi-Fi Essential Oil Diffuser",
+        "description": "App and Voice Control Compatible with Alexa, 500ml Aromatherapy Humidifier for Relaxing Atmosphere in Home Office Bedroom Gold\n\nBrand\tASAKUKI\nColor\tGold\nScent\tAromatherapy\nRecommended Uses For Product\tOffice, Home\nMaterial\tPolypropylene (PP)",
+        "image_url": "https://m.media-amazon.com/images/I/61kLXiKal3L._AC_SL1500_.jpg",
+        "price": 289.35,
+        "stock": 10
+      },
+      "quantity": 4,
+      "subtotal": 1157.40
+    },
+    {
+      "tpid": 64,
+      "product": {
+        "pid": 5,
+        "name": "GHome Smart Mini Smart Plug",
+        "description": "WiFi Outlet Socket Works with Alexa and Google Home, Remote Control with Timer Function, Only Supports 2.4GHz Network, No Hub Required, ETL FCC Listed (4 Pack),White\nBrand\tGHome Smart\nColor\tWhite\nVoltage\t120 Volts\nMaterial\tPlastic\nConnector Type\tPlug In",
+        "image_url": "https://m.media-amazon.com/images/I/51LMG3goG3L.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+        "price": 166.69,
+        "stock": 300
+      },
+      "quantity": 2,
+      "subtotal": 333.38
+    },
+    {
+      "tpid": 65,
+      "product": {
+        "pid": 1,
+        "name": "LED Garage Ceiling Light with Camera",
+        "description": "-12000LM Super Bright 6500K Smart Security Garage Light WiFi 2.4GHz,Two-Way Audio, Video Motion Notifications\n \nBrand:\t    GuiShenRen\nColor:\t    Black\nMaterial:   Acrylonitrile Butadiene Styrene\nStyle:      Modern\n",
+        "image_url": "https://m.media-amazon.com/images/I/61JJ50MjV8L._AC_SL1500_.jpg",
+        "price": 367.57,
+        "stock": 165
+      },
+      "quantity": 2,
+      "subtotal": 735.14
+    },
+    {
+      "tpid": 66,
+      "product": {
+        "pid": 4,
+        "name": "2-in-1 Dish Soap Dispenser ",
+        "description": "dishwashing Liquid Dispenser for Kitchen - Smart Kitchen Gadgets 2023 - Sink Countertop Organizer for Kitchen Sink…\nColor\tWhite\nMaterial\tPlastic\nBrand\tOMAIA\nProduct Dimensions\t5.4\"L x 3.9\"W x 3.35\"H\nShape\tRectangular",
+        "image_url": "https://m.media-amazon.com/images/I/8131tWdYFfL._AC_SL1500_.jpg",
+        "price": 78.29,
+        "stock": 500
+      },
+      "quantity": 1,
+      "subtotal": 78.29
+    },
+    {
+      "tpid": 67,
+      "product": {
+        "pid": 6,
+        "name": "YIQIAOHUI Electric Spin Scrubber",
+        "description": "Power Shower Scrubber with 5 Replaceable Brush Heads and Adjustable Extension Handle\nMaterial\tPolypropylene, Aluminum Alloy, Plastic\nBrand\tHomyeko\nColor\tWhite\nModel Name\tAES023\nPower Source\tBattery Powered",
+        "image_url": "https://m.media-amazon.com/images/I/71AW3joBegL._AC_SL1500_.jpg",
+        "price": 430.98,
+        "stock": 200
+      },
+      "quantity": 1,
+      "subtotal": 430.98
+    },
+    {
+      "tpid": 68,
+      "product": {
+        "pid": 8,
+        "name": "WALI Outlet Shelf Wall Holder",
+        "description": "Bathroom Wall Shelf up to 10lbs Standard Vertical Duplex Wall Shelf Organizer for Smart Home Decor Space Saving Power Tools\nBrand\tWALI\nColor\tWhite\nCompatible Devices\tSmart Speakers\nCompatible Phone Models\tiPhone 4\nMounting Type\tWall Mount",
+        "image_url": "https://m.media-amazon.com/images/I/61hZMlAcbuL._AC_SL1500_.jpg",
+        "price": 109.64,
+        "stock": 388
+      },
+      "quantity": 1,
+      "subtotal": 109.64
+    },
+    {
+      "tpid": 69,
+      "product": {
+        "pid": 9,
+        "name": "H1 Smart Door Handle Lock",
+        "description": "Keyless Entry with Fingerprint Technology, Smart Solution for Bedrooms & Offices.\nBrand\tSaulex\nLock Type\tBiometric, Combination Lock, Keypad\nItem Dimensions LxWxH\t6.8 x 2.2 x 3 inches\nMaterial\tAluminum",
+        "image_url": "https://m.media-amazon.com/images/I/71L2GGH85WL._AC_SL1500_.jpg",
+        "price": 548.52,
+        "stock": 555
+      },
+      "quantity": 1,
+      "subtotal": 548.52
+    },
+    {
+      "tpid": 70,
+      "product": {
+        "pid": 10,
+        "name": "Smart WiFi Wireless Ultrasonic Diffuser",
+        "description": "Humidifier with Alexa & Google Home Phone App & Voice Control - Create Schedules\nBrand\tSierra Modern Home\nColor\tDark Brown\nScent\tAromatherapy\nSpecial Feature\tTimer",
+        "image_url": "https://m.media-amazon.com/images/I/713+ykRgTIL._AC_SL1500_.jpg",
+        "price": 313.09,
+        "stock": 100
+      },
+      "quantity": 1,
+      "subtotal": 313.09
+    }
+  ]
+}

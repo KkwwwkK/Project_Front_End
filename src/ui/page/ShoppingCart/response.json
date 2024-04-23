@@ -1,0 +1,74 @@
+[
+  {
+    "pid": 1,
+    "name": "LED Garage Ceiling Light with Camera",
+    "image_url": "https://m.media-amazon.com/images/I/61JJ50MjV8L._AC_SL1500_.jpg",
+    "price": 367.57,
+    "cart_quantity": 11,
+    "stock": 165
+  },
+  {
+    "pid": 6,
+    "name": "YIQIAOHUI Electric Spin Scrubber",
+    "image_url": "https://m.media-amazon.com/images/I/71AW3joBegL._AC_SL1500_.jpg",
+    "price": 430.98,
+    "cart_quantity": 16,
+    "stock": 200
+  },
+  {
+    "pid": 4,
+    "name": "2-in-1 Dish Soap Dispenser ",
+    "image_url": "https://m.media-amazon.com/images/I/8131tWdYFfL._AC_SL1500_.jpg",
+    "price": 78.29,
+    "cart_quantity": 8,
+    "stock": 500
+  },
+  {
+    "pid": 7,
+    "name": "Google Nest Thermostat",
+    "image_url": "https://m.media-amazon.com/images/I/51JSqlt6xLL._AC_SL1500_.jpg",
+    "price": 822.84,
+    "cart_quantity": 8,
+    "stock": 399
+  },
+  {
+    "pid": 8,
+    "name": "WALI Outlet Shelf Wall Holder",
+    "image_url": "https://m.media-amazon.com/images/I/61hZMlAcbuL._AC_SL1500_.jpg",
+    "price": 109.64,
+    "cart_quantity": 8,
+    "stock": 388
+  },
+  {
+    "pid": 3,
+    "name": "ASAKUKI Smart Wi-Fi Essential Oil Diffuser",
+    "image_url": "https://m.media-amazon.com/images/I/61kLXiKal3L._AC_SL1500_.jpg",
+    "price": 289.35,
+    "cart_quantity": 10,
+    "stock": 10
+  },
+  {
+    "pid": 5,
+    "name": "GHome Smart Mini Smart Plug",
+    "image_url": "https://m.media-amazon.com/images/I/51LMG3goG3L.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+    "price": 166.69,
+    "cart_quantity": 10,
+    "stock": 300
+  },
+  {
+    "pid": 9,
+    "name": "H1 Smart Door Handle Lock",
+    "image_url": "https://m.media-amazon.com/images/I/71L2GGH85WL._AC_SL1500_.jpg",
+    "price": 548.52,
+    "cart_quantity": 10,
+    "stock": 555
+  },
+  {
+    "pid": 10,
+    "name": "Smart WiFi Wireless Ultrasonic Diffuser",
+    "image_url": "https://m.media-amazon.com/images/I/713+ykRgTIL._AC_SL1500_.jpg",
+    "price": 313.09,
+    "cart_quantity": 10,
+    "stock": 100
+  }
+]
