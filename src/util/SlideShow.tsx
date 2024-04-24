@@ -8,18 +8,7 @@ interface SlideImage {
 }
 
 const slideImages: SlideImage[] = [
-    // {
-    //     url: 'https://wallpapers.com/images/high/white-power-button-computer-screen-lwszyg7jnqf7gfgb.webp',
-    //     caption: 'Slide 1'
-    // },
-    // {
-    //     url: 'https://i.pinimg.com/736x/28/eb/3a/28eb3a508e4bcc597c87979a72409096.jpg',
-    //     caption: 'Slide 2'
-    // },
-    // {
-    //     url: 'https://i.ytimg.com/vi/02Ip22mnHS0/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShMMA8=&rs=AOn4CLDcGIbBUz_vTUc33tXR4wJmfa0DEw',
-    //     caption: 'Slide 3'
-    // },
+
     {
         url: 'https://m.media-amazon.com/images/I/615O7KhFfLL._AC_SL1500_.jpg',
         caption: 'Slide 1'
@@ -69,7 +58,7 @@ const AliceCarouselWithIndicators = () => {
     }, [currentIndex]); // Re-run effect when currentIndex changes
 
     return (
-        <div className="alice-carousel-container" style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '-130px' }}>
+        <div className="alice-carousel-container" style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '-200px' }}>
             <AliceCarousel
                 mouseTracking
                 items={slideImages.map((slide, index) => (

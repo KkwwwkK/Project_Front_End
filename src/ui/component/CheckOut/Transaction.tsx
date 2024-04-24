@@ -13,7 +13,6 @@ import Box from "@mui/material/Box";
 // import Stack from "@mui/material/Stack";
 import TransactionRow from "./TransactionRow.tsx";
 import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
-import StickyFooter from "../../../util/Footer.tsx";
 
 
 

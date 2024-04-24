@@ -1,9 +1,10 @@
 import * as FirebaseAuthService from "../authService/FirebaseAuthService.tsx";
 import axios from "axios";
 import {CartItemDto} from "../data/CartItem/CartItemDto.ts";
+import getEnvConfig from "../config/EnvConfig.ts";
 
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = getEnvConfig().baseUrl;
 
 
 
