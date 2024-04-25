@@ -11,11 +11,10 @@ type Props = {
 export default function ProductItemList({ productListDto }: Props) {
     return (
         <Container>
-            <Grid container spacing={4}  sx={{
-            }}>
+            <Grid container spacing={4}>
                 {productListDto.map((value) => (
                     // Define different breakpoints for responsive layout
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={value.pid}>
+                    <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={value.pid}>
                         <Box sx={{ margin: '12px' }}>
                             <ProductItem listData={value} />
                         </Box>
