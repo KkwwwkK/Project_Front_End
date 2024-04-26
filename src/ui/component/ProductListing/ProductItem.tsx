@@ -20,7 +20,8 @@ type Props = {
 }
 
 export default function ProductItem({listData}: Props) {
-    // console.log("listData:", listData);
+    // Checking: console.log("listData:", listData);
+
     const navigate = useNavigate();
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
@@ -28,7 +29,7 @@ export default function ProductItem({listData}: Props) {
     const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
 
     // Ensure cartContext is defined before accessing properties
-    const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
+    const cartContext = useContext<CartContextType | undefined>(CartContext);
     const setCartItemNumber = cartContext?.setCartItemNumber;
 
     const handleAddToCart = async ()=> {
