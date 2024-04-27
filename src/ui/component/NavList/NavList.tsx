@@ -21,7 +21,8 @@ import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.t
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { CartContext, CartContextType } from "../../../context/CartContext.ts";
-//
+
+
 
 const SearchContainer = styled('form')(({ theme }) => ({
     position: 'relative',
@@ -75,9 +76,12 @@ export default function NavList() {
     const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
     const cartItemNumber = cartContext?.cartItemNumber;
 
+
+
     const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setSearchQuery(event.target.value);
     };
+
 
     const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
