@@ -40,9 +40,9 @@ export default function ProductListingPage(){
     return(
         <>
             <NavList/>
-            <Box sx={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'right', alignItems: 'center', marginTop:'400px', marginBottom: '30px' }}>
+            <Box sx={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop:'500px', marginBottom: '30px'}}>
                     <img
-                        src="https://wallpapers.com/images/high/robot-background-s0kq5o0tyixpq6c1.webp"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMlskJBUic3-pKDgsQgXVHyVsNqzSE9GwJGf9NvdkCBQ&s"
                         alt="Sample Image"
                         style={{display: 'flex', position: 'absolute'}}
                     />
