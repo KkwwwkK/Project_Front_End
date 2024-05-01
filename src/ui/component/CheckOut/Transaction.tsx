@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import {Container} from "@mui/material";
+import {Container, useMediaQuery} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import PaymentForm from "./PaymentForm.tsx";
 import Box from "@mui/material/Box";
@@ -21,11 +21,12 @@ type Props = {
 }
 
 export default function Transaction({transactionByTidDto}: Props) {
+    const isSmallScreen = useMediaQuery('(max-width: 800px)');
 
     return (
         <Container sx={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: isSmallScreen ? 'column': 'row',
             justifyContent: 'center',
             ml: '64px',
         }}>

@@ -6,8 +6,8 @@ import {useEffect, useState} from "react";
 import {ProductDetailDto} from "../../../data/ProductDetail/ProductDetailDto.tsx";
 // import ErrorPage from "../../component/ErrorPage/ErrorPage.tsx";
 import * as ProductDetailApi from "../../../api/ProductApi.tsx"
-import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 import StickyFooter from "../../../util/Footer.tsx";
+import LoadingContainer from "../../component/ShoppingCart/LoadingContainer.tsx";
 
 type params = {
     productId: string,
@@ -62,10 +62,6 @@ export default function ProductDetail() {
                     : <LoadingContainer/>
             }
             <StickyFooter />
-            {/*<h1>Product Listing Page!</h1>*/}
-            {/*<h2>The pid is {params.productId}</h2>*/}
-            {/*<h2>The userId is {params.userId}</h2>*/}
-            {/*<h3>Pathname: {location.pathname} </h3>*/}
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import {Alert, AlertTitle, Container} from "@mui/material";
+import {Alert, AlertTitle, Container, useMediaQuery} from "@mui/material";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -28,6 +28,8 @@ export default function ProductDetailInfo({productDetailDto}: Props){
     // Ensure cartContext is defined before accessing properties
     const cartContext = useContext<CartContextType | undefined>(CartContext); // Consume context values
     const setCartItemNumber = cartContext?.setCartItemNumber;
+
+    const isSmallScreen = useMediaQuery('(max-width: 1000px)');
     const handleMinus = ()=> {
         if(quantity > 1){
             setQuantity((prevState:number) => (
@@ -91,7 +93,7 @@ export default function ProductDetailInfo({productDetailDto}: Props){
         if (productDetailDto.stock > 0){
             return(
                 <Box >
-                    <Box sx={{display:"flex", flexDirection: "column", ml: "16px"}}>
+                    <Box sx={{display:"flex", flexDirection:"column", ml: "16px"}}>
                         <QuantityInput
                             quantity={quantity}
                             handleMinus={handleMinus}
@@ -132,7 +134,7 @@ export default function ProductDetailInfo({productDetailDto}: Props){
 
     return(
         <Container sx={{ display: "flex",
-            flexDirection: "row",
+            flexDirection: isSmallScreen ? "column": "row",
             justifyContent: "center",
             alignItems: "center",
             marginTop: "80px",

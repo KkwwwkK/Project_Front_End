@@ -1,5 +1,15 @@
 // import * as React from 'react';
-import {TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Container} from '@mui/material';
+import {
+    TableContainer,
+    Table,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableBody,
+    Paper,
+    Container,
+    useMediaQuery
+} from '@mui/material';
 import ShoppingCartTableRow from "./ShoppingCartTableRow.tsx";
 import OrderSummary from "./OrderSummary.tsx";
 import {CartItemDto} from "../../../data/CartItem/CartItemDto.ts";
@@ -14,6 +24,7 @@ type Props={
 export default function ShoppingCartTable({cartItemDto}: Props){
     const[totalPrice, setTotalPrice] = useState<number>(0);
     const[newCartItem, setNewCartItem] = useState<CartItemDto[]>(cartItemDto);
+    const isSmallScreen = useMediaQuery('(max-width: 800px)');
 
     const updateTotalPrice = (items: CartItemDto[]) => {
         let newTotalPrice = 0;
@@ -50,7 +61,7 @@ export default function ShoppingCartTable({cartItemDto}: Props){
     return (
         <Container sx={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: isSmallScreen ? 'column' : 'row',
             marginTop: '100px',
             justifyContent: 'center',
             marginBottom:"400px"

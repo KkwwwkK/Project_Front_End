@@ -58,7 +58,7 @@ const AliceCarouselWithIndicators = () => {
     }, [currentIndex]); // Re-run effect when currentIndex changes
 
     return (
-        <div className="alice-carousel-container" style={{ marginTop: '-200px' }}>
+        <div className="alice-carousel-container" style={{ }}>
             <AliceCarousel
                 mouseTracking
                 items={slideImages.map((slide, index) => (
@@ -93,8 +93,8 @@ const AliceCarouselWithIndicators = () => {
                     }
 
                     .carousel-image {
-                        width: 100vw; /* Image width covers entire container */
-                        height: 50vh; /* Maintain aspect ratio */
+                        width: 100%; /* Image width covers entire container */
+                        height: 40vh; /* Maintain aspect ratio */
                         object-fit: contain; /* Ensure image covers entire space */
                     }
 

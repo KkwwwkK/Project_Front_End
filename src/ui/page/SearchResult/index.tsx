@@ -6,10 +6,10 @@ import * as ProductApi from "../../../api/ProductApi.tsx"
 import {ProductListDto} from "../../../data/ProductList/ProductListDto.tsx";
 import {useEffect, useState} from "react";
 // import QuantityInput from "../../../util/QuantityInput.tsx";
-import LoadingContainer from "../../component/ProductListing/LoadingContainer.tsx";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import StickyFooter from "../../../util/Footer.tsx";
+import LoadingContainer from "../../component/ShoppingCart/LoadingContainer.tsx";
 
 type params = {
     userInput: string,

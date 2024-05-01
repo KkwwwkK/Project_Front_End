@@ -139,7 +139,7 @@ export default function NavList() {
 
 
     return (
-        <Box sx={{ flexGrow: 1}}>
+        <Box sx={{display: "flex", marginBottom: '4%', flexGrow: 1}}>
             <AppBar position="fixed" sx={{ backgroundColor: 'black', marginBottom: '0'}}>
                 <Toolbar>
                     <IconButton

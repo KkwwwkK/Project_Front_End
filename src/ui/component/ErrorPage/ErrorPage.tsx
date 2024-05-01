@@ -11,7 +11,7 @@ const Error = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '100vh',
-                backgroundImage: `url('https://wallpapers.com/images/high/robot-pictures-049zn0b2q7ld5nlw.webp')`,
+                backgroundImage: `url('https://cdn.mos.cms.futurecdn.net/NJTBdHKYVWV4kur69PwueY.jpg')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 color: 'white',
