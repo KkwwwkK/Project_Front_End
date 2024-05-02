@@ -9,12 +9,15 @@ import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
 import SimCardRoundedIcon from '@mui/icons-material/SimCardRounded';
 import { styled } from '@mui/system';
 import { Container } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import {redirect, useNavigate} from "react-router-dom";
 import LoadingContainer from "./LoadingContainer";
 import * as TransactionApi from "../../../api/TransactionApi.ts";
 import {TransactionDto} from "../../../data/Transaction/TransactionDto.tsx";
 import {useContext} from "react";
 import {CartContext, CartContextType} from "../../../context/CartContext.ts";
+
+import * as StripeApi from "../../../api/StripeApi.ts"
+
 
 const FormGrid = styled('div')(() => ({
     display: 'flex',
@@ -91,6 +94,17 @@ export default function PaymentForm({transactionByTidDto }: Props) {
             navigate('/error');
         }
     };
+
+    const handleCheckout = async () => {
+        try{
+            const paymentUrl = await StripeApi.checkout();
+            window.location.replace(paymentUrl);
+        } catch(error){
+            console.log(error);
+            throw error;
+        }
+
+    }
 
     return (
         <Container sx={{ display: 'flex', width: '43vw' }}>
@@ -169,7 +183,7 @@ export default function PaymentForm({transactionByTidDto }: Props) {
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={handleConfirmPayment}
+                            onClick={handleCheckout}
                             sx={{
                                 backgroundColor: '#212121',
                                 color: '#fff',

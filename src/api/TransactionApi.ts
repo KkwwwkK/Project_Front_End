@@ -98,5 +98,8 @@ export async function finishTransactionByTid(tid: number){
         console.log(error);
         throw error;
     }
+
+
+
 }
 
